@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 ## Toys of Ultimate Power
 
