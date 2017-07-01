@@ -18,7 +18,7 @@ It didn't seem right to debate the point with her during a crit-session. That wo
 
 I read it that summer, from cover to cover. In his book, Penrose makes the claim that human consciousness can't be computed because the mind relies on processes in nature that are themselves non-computable. To make his point, he delivers a tour of all the stranger parts of relativity and quantum mechanics. 
 
-The book had a remarkable effect on me but not the one Penrose intended. He convinced me that he was exactly *wrong*. Not only was the human mind computable, but every weird physical phenomenon he outlined was computable too. Nature, I came to believe, was a discrete process proceeding via a system of simple, inexorable rules. 
+The book had a remarkable effect on me but not the one Penrose intended. He convinced me that he was exactly *wrong*. Not only was the human mind computable, but every weird physical phenomenon he outlined was computable too. Nature, I came to believe, could be described using nothing more than a discrete process proceeding via a system of simple, inexorable rules. 
 
 For whatever reason, this idea took hold of me. And over the years that followed, I found myself embarking on a quixotic quest: to prove Penrose's mistake. I wanted to take every important physical symmetry that informs how our universe operates and reproduce it in discretized, digital form. I wanted to model everything. Not all at once, you understand, but piecemeal – one symmetry at a time in a series of concise but irrefutable digital toy models. 
 
