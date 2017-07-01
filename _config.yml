@@ -6,7 +6,7 @@
 name: Alex Lamb
 
 # Short bio or description (displayed in the header)
-description: Science fiction author, complex systems theorist, software developer, communication skills trainer, lost person
+description: Science fiction author, complex systems researcher, software developer, improv instructor, dad, soft skills trainer, etc.
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://avatars3.githubusercontent.com/u/3706890?v=3&u=af9cbbacf3d57ba47e7083e0b83a516adeed9961&s=400 #https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
@@ -22,8 +22,8 @@ footer-links:
   facebook:
   flickr:
   github: alexlamb
-  instagram:
-  linkedin:
+  instagram: @alex_lamb
+  linkedin: https://www.linkedin.com/in/alex-lamb-8343431/
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: alex_lamb
