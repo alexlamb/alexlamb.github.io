@@ -7,7 +7,7 @@ In 1997, I began a strange journey. It started in a writer workshop in Seattle b
 
 Clarion West is a marvelous institution. If you can win a place, you have six weeks to discover what it means to be an author. Each week, some different award-winning luminary becomes your mentor, reading your work, helping you hone your skills. Or rather, I should say, that's what happens for five of those weeks. There's one week that's different (or it was in 1997), where representatives of a major US science fiction publisher serve as your mentors instead. You are encouraged to produce a novel outline. As an exercise, you understand, not as a pitch to the publishers. However, everyone knows that if the publishers *like* your pitch, magic can happen.
 
-My pitch was for a hard science fiction detective novel that riffed hard off my prior experience as an AI researcher. It involved espionage, uploaded consciousness, Egyptian mythology, and noir detectives. I thought it was pretty cool.
+My pitch was for a hard science fiction crime novel that riffed hard off my prior experience as an AI researcher. It involved espionage, uploaded consciousness, Egyptian mythology, and noir detectives. I thought it was pretty cool.
 
 About halfway through the critique session for my outline, a friend of mine in the group offered the following thought.
 "It's a great premise, Alex," she said. "It's a shame it could never happen in real life."
