@@ -200,4 +200,4 @@ function simWealthEntropyBasic() {
 simWealthEntropyBasic();
 </script>
 
-And here's some text to follow. 
+And here's some text to follow.
