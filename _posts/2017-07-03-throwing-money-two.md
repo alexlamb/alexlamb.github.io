@@ -1,7 +1,9 @@
 ---
 published: false
 ---
-In the last post, I showed you a very simple simulation that seems to reproduce, at least to first approximation, the kind of wealth distribution that show up in real economies. To do this, all we had to do was give a bunch of agents some money and let them hand it around at random. Magic! And we raised the following question: *if this model reflects the real world so well, why should be believe that the rich are anything but plain lucky?* But we left on a cliffhanger. We didn't even try to look at what would happen if some of the agents were somehow more deserving of wealth than others. So let's fix that and see what happens. 
+In the last post, I showed you a very simple simulation that seems to reproduce, at least to first approximation, the kind of wealth distribution that show up in real economies. To do this, all we had to do was give a bunch of agents some money and let them hand it around at random. Magic! 
+
+And we raised the following question: *if this model reflects the real world so well, why should be believe that the rich are anything but plain lucky?* But we left on a cliffhanger. We didn't even try to look at what would happen if some of the agents were somehow more deserving of wealth than others. So let's fix that and see what happens. 
 
 Let's tweak the simulation we used last time. First, let's give all our agents a special attribute we'll call *talent*. We'll color them brighter shades of gold based on how much talent they have. And then we'll extend our model so that for each transaction, instead of one agent just handing money to another, there's a choice. Each agent (let's call him A) picks two partners at random: B and C. He then chooses at random based on how talented B is compared to C, and gives his money to the winner. This doesn't mean that the most talented agent will always be selected. But if B has a talent of 4/10 and C has talent of 6/10, then B is going to receive money 40% of the time. 
 
@@ -42,4 +44,3 @@ We'll re-set our fit metric back to the way it was initially so that it measures
 "Fair enough," said Karl. "You're on."
 
 Which approach will have the greatest effect? Any guesses. Tune in next time for the next installment of Wealth Distribution Adventures!
-
