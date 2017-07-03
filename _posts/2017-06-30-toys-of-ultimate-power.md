@@ -8,10 +8,15 @@ Clarion West is a marvelous institution. If you can win a place, you have six we
 My pitch was for a hard science fiction crime novel that riffed hard off my prior experience as an AI researcher. It involved espionage, uploaded consciousness, Egyptian mythology, and noir detectives. I thought it was pretty cool.
 
 About halfway through the critique session for my outline, a friend of mine in the group offered the following thought.
+
 "It's a great premise, Alex," she said. "It's a shame it could never happen in real life."
+
 Needless to say, I wasn't thrilled by this assessment under the circumstances, even coming from someone I admired. I asked her what she meant. 
+
 "Consciousness can't run on machines," she told me. "Roger Penrose has proved it. It's all in his book, [The Emperor's New Mind](https://www.amazon.com/Emperors-New-Mind-Concerning-Computers/dp/0192861980)."
+
 "Bollocks," I thought, but did not say. 
+
 It didn't seem right to debate the point with her during a crit-session. That would have been counter to the spirit of the workshop. But I filed the remark away and resolved to read this book that had supposedly upended the last thirty years of AI research.
 
 I read it that summer, from cover to cover. In his book, Penrose makes the claim that human consciousness can't be computed because the mind relies on processes in nature that are themselves non-computable. To make his point, he delivers a tour of all the stranger parts of relativity and quantum mechanics. 
