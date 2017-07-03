@@ -134,7 +134,7 @@ Well, it's not really that surprising if you think about it. Consider the first 
 
 What I think's interesting about this pattern is how much it looks like the ones that show up in real life. Take a look at this plot of the UK's wealth distribution for [instance](https://www.thenetworkforsocialchange.org.uk/resources/am-i-rich.html). 
 
-It's a little uncanny. Unsurprisingly, economists have used this kind of game to model national economies. And why not? You can think of this model as capturing one half of what makes an economy run. Every transfer of money is an instance of someone paying for something. We're just not bothering to model the services that they're getting in return for their cash. 
+It's a little uncanny. Unsurprisingly, some economists have used this kind of game to model national economies. And why not? You can think of this model as capturing one half of what makes an economy run. Every transfer of money is an instance of someone paying for something. We're just not bothering to model the services that they're getting in return for their cash. 
 
 But to make our model of a national economy more realistic, we should add some extra detail to make sure that the similarity isn't some kind of fluke. For starters, not everything in life costs a dollar, and not everyone starts off with the same amount of money. So let's vary the amount transferred in each transaction, and give everyone a random amount of cash within a given range to start with. 
 
