@@ -12,7 +12,7 @@ But before you follow those links, here's a model of the random-money-gifting ef
 
 What are we seeing here? Well, unexpectedly, some people are making out like bandits while others end up with empty pockets. Why is that?
 
-Well, it's not really that surprising if you think about it. Consider the first gifts made by each of the five hundred agents in the simulation. It would be weird if every agent chose a partner to give to such that there were zero overlaps and nobody got left out. So some people are going to end up with more money than others early on in the game. Then consider the second round of gifts. It would be just as weird if the second round of offered dollars was perfectly balanced to counteract the first. So within two rounds of everyone handing out money, we already know that some people are going to get ahead. And the bigger that asymmetry gets, the less likely that the gifts that follow are going to make it magically go away. 
+Well, it's not really that surprising if you think about it. Consider the first gifts made by each of the five hundred agents in the simulation. It would be weird if every agent chose a partner to give to such that there were zero overlaps and nobody got left out. So some people are going to end up with more money than others early on in the game. Then consider the second round of gifts. It would be just as strange if the second round of offered dollars was perfectly balanced to counteract the imbalance of the first. So within two rounds of everyone handing out money, we already know that some people are going to get ahead. And the bigger that asymmetry gets, the less likely that the gifts that follow are going to make that imbalance magically go away. 
 
 
 Distribution looks like wealth in real life.
