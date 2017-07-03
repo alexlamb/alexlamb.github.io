@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 Here's a fun place to kick off a discussion about simulations. Give a room full of people a hundred bucks each in dollar bills. Then get them to hand money to random people they meet as they walk around, one dollar at a time. What do you think happens?
 
