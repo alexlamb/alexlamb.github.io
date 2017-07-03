@@ -348,6 +348,7 @@ simWealthEntropyBasic();
 Interesting. It makes you wonder: if a random process gives you something like the wealth curve that shows up in real life, why do we suppose that attributes like talent make a difference to why people get rich? It seems from this like the rich would get richer even if life was perfectly random, so why do we imagine that those at the top of the social hierarchy earn what they get?
 
 A political Conservative might reply by saying something like this:
+
 _"You've shown nothing. There's no variable for individual talent in the model. If you don't put talent in and look at how it affects things, how can you possibly assert that talent isn't relevant?"
 _
 
