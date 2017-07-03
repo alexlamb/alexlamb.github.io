@@ -128,7 +128,7 @@ function simWealthEntropyMinimal() {
 simWealthEntropyMinimal();
 </script>
 
-What are we seeing here? Well, unexpectedly, some people are making out like bandits while others end up with empty pockets. Why is that?
+What are we seeing here? Unexpectedly, some people are making out like bandits while others end up with empty pockets. Why is that?
 
 Well, it's not really that surprising if you think about it. Consider the first gifts made by each of the five hundred agents in the simulation. It would be weird if every agent chose a partner to give to such that everyone received exactly one dollar and nobody got left out. So some people are going to end up with more money than others early on in the game. Then consider the second round of gifts. It would be just as strange if the second round of offered dollars was perfectly balanced to counteract the imbalance of the first round. So within two rounds of everyone handing out money, we already know that some people are going to get ahead. And the bigger that asymmetry gets, the less likely that the gifts that follow are going to make that imbalance magically go away. 
 
