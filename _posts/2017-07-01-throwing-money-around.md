@@ -21,15 +21,22 @@ What I think's interesting about this distribution of wealth is how much it look
 
 It's a little uncanny. Unsurprisingly, economists have used this kind of game to model national economies. And why not? You can think of this model as capturing one half of what makes an economy run. Every transfer of money is an instance of someone paying for something. We're just not bothering to model the services that they're getting in return for their cash. 
 
-But to make our model of a national economy more realistic, let's add some extra realism. For starters, not everything in life costs a dollar, and not everyone starts off with the same amount of money.
+But to make our model of a national economy more realistic, let's add some extra realism. For starters, not everything in life costs a dollar, and not everyone starts off with the same amount of money. So let's vary the amount transferred in each transaction, and give everyone a random amount of cash within a given range to start with. 
+
+Let's also add a metric to look at how the inequality in the model is changing over time. For this, we're going to use the GINI coefficient, a well-understood if imperfect yardstick for understanding societies and wealth. 
+
+GINI is easy to understand. Basically, we calculate the differences from the average wealth that every agent has and find the mean of that number. Then we divide that mean by the largest possible value we could get, to give us a number between zero and one. Zero means that society is equal. One means that someone has all the money and everyone else is penniless. 
+
+I've also measured something else here: social mobility. I look at where people start out on the social ladder and compare that to where they end up after people start handing them dollars. Finding the average distance traveled and comparing that to the maximum amount of possible change gives us a number similar to GINI that tells us whether wealth levels have changed. This gives us a way to model whether our toy economy is keeping people in one class, or letting them move about. 
+
+I've added one more feature that's worth mentioning here. Instead of just giving every agent a random color, I've ranged the colors from dark to light based on how much money they start with. That way you can see at a glance whether our agents are moving about. This should help us check whether our mobility index is working. 
+
+
+Here's the question: does adding extra complexity to the model change how it behaves? Click the sim to see. 
 
 
 
-The GINI number in the top left is a measure of wealth inequality in the population.
 
-
-
-I've also measured something else here: social mobility. I look at where people start out on the social ladder, and compare that to where they are now. That gives me a way to model whether our toy economy is keeping people in one class, or letting them move about. 
 
 
 If a random process gives you something like the wealth curve that shows up in real life, why do we suppose that attributes like talent make a difference? The rich would get richer even if life was perfectly random, so why do we imagine that the wealthy earn what they get?
