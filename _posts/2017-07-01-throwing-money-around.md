@@ -349,7 +349,6 @@ Interesting. It makes you wonder: if a random process gives you something like t
 
 A political Conservative might reply by saying something like this:
 
-_"You've shown nothing. There's no variable for individual talent in the model. If you don't put talent in and look at how it affects things, how can you possibly assert that talent isn't relevant?"
-_
+*"You've shown nothing. There's no variable for individual talent in the model. If you don't put talent in and look at how it affects things, how can you possibly assert that talent isn't relevant?"*
 
 And she'd be right. So next time, we'll try that and see what happens.
