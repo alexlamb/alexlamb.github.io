@@ -21,19 +21,19 @@ At this point, it's probably appropriate to introduce a Progressive voice. Let's
 
 "The first thing to note," says Karl, "is that this society is less equal than the random one we started out with. Just look at the GINI coefficient." 
 
-"What's wrong with that?" says Ayn?
+"What's wrong with that?" says Ayn.
 
 "For starters, many of your population with at least some talent are doing less well than they were before we changed the model."
 
-"So what?" says Ayn. "At least society is reflecting the value that is put into it. That's a better outcome."
+"So what?" says Ayn. "At least society is reflecting the value that's put into it. That's a better outcome."
 
 "Only for those at the top," Karl points out. "Besides, this *isn't* what happens in the real world. In life, the money you can make is largely determined by how much you started out with. If we wanted to build a realistic model of society, we'd do that."
 
 So lets try Karl's idea. This time, instead of A deciding who receives cash based on their talent, let's have him decide based on how much money B and C already own. We can imagine that an agent's money pile reflects the size of their marketing budget, perhaps, or their reputation for success. 
 
-This time, we'll color the agents green for wealth. This means that at first, you can't see the individual agents, because they're all arranged in order of their bank-balance. However, that won't last long once the simulation starts. 
+This time, we'll color the agents green for wealth. This means that at first, you can't see the individual agents, because they're all arranged in order of their bank balance. However, that won't last long once money starts changing hands. 
 
-We'll re-set our fit metric back to the way it was initially so that it measures the change in an agent's wealth from their initial position. If where you start off in life is a good measure of where you end up, that number should stay high. 
+We'll reset our fit metric back to the way it was initially so that it measures the change in an agent's wealth from their initial position. If where you start off in life is a good measure of where you end up, that number should stay high. 
 
 
 
@@ -43,4 +43,4 @@ We'll re-set our fit metric back to the way it was initially so that it measures
 
 "Fair enough," said Karl. "You're on."
 
-Which approach will have the greatest effect? Any guesses. Tune in next time for the next installment of Wealth Distribution Adventures!
+Which approach will have the greatest effect? Any guesses. Tune in next time for another installment of Wealth Distribution Adventures!
