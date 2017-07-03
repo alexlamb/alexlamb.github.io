@@ -11,6 +11,212 @@ Let's also change our fitness measure to reflect our new experiment. Last time, 
 
 What happens? Click the sim to find out.
 
+<canvas id="canvasWealthEntropyTalent" width="500" height="200">
+ Your browser does not support the HTML 5 Canvas.
+</canvas>
+<script>
+function simWealthEntropyTalent() {
+
+  //SIM WRAPPER CONFIG =====================
+  var state = 0;
+  var timer;
+  var canvas = document.getElementById('canvasWealthEntropyTalent');
+  var context = canvas.getContext('2d');
+  canvas.addEventListener('click', updateState, false);
+
+  function updateState() {
+    state = (state+1)%3;
+    if (state == 0) {
+      //Reset sim
+      init();
+    } else if (state == 1) {
+      //Run sim
+      timer = setInterval(update, 33);
+    } else {
+      //Stop sim
+      clearInterval(timer);
+    }
+  }
+  //=====================
+  //SIM CODE =====================
+
+  var agentList;
+  var agentCount = 500;
+  var wealthInit = 1000;
+  var exchangesPerUpdate = 100;
+  var maxExchange = 100;
+  var gini = 0;
+  var fit = 0;
+
+  function init() {
+    agentList = new Array();
+
+    //Create agents
+    for (var i = 0; i < agentCount; i++) {
+      var agent = {
+        wealth:(Math.random() * wealthInit * 2),
+        talent:Math.random(),
+        color:"#000000",
+        rank: 0
+      }
+      agentList.push(agent);
+    }
+
+    //Sort agents by talent
+    agentList.sort(function (a,b) {
+      return a.talent - b.talent;
+    });
+
+    //Set color for agents based on talent
+    for (var i = 0; i < agentCount; i++) {
+      var agent = agentList[i];
+      var redVal = Math.floor(agent.talent * 255.0);
+      var greenVal = Math.floor(agent.talent * 255.0 * 0.9);
+      agent.color = "rgb("+redVal+","+greenVal+",0)"
+      agent.rank = i;
+    }
+
+    //Sort agents by wealth
+    agentList.sort(function (a,b) {
+      return a.wealth - b.wealth;
+    });
+
+    //Calculate wealth ineuality
+    gini = calculateGini();
+
+    //Calculate predictive power of measure
+    fit = calculateFit();
+
+    paint();
+  }
+
+  function update() {
+
+    //Make wealth transfers
+    for (var i = 0; i < exchangesPerUpdate; i++) {
+      var exchangeAmount = Math.random() * maxExchange;
+
+      var indexA = Math.floor(Math.random() * agentCount);
+      var indexB = Math.floor(Math.random() * agentCount);
+      var indexC = Math.floor(Math.random() * agentCount);
+      var agentA = agentList[indexA];
+      var agentB = agentList[indexB];
+      var agentC = agentList[indexC];
+
+      //If A can pay
+      if (agentA.wealth >= exchangeAmount) {
+        agentA.wealth -= exchangeAmount;
+
+        //We pay the supplier with the most talent
+        var talentSum = agentB.talent + agentC.talent;
+        var fractionTalentB = agentB.talent/talentSum;
+
+        if (Math.random() < fractionTalentB) {
+          agentB.wealth += exchangeAmount;
+        } else {
+          agentC.wealth += exchangeAmount;
+        }
+      }
+    }
+
+    //Sort array by wealth
+    agentList.sort(function (a,b) {
+      return a.wealth - b.wealth;
+    });
+
+    //Calculate wealth inequality
+    gini = calculateGini();
+
+    //Calculate predictive power of measure
+    fit = calculateFit();
+
+    paint();
+  }
+
+  function calculateGini() {
+
+    //Find total wealth
+    var totalWealth = 0;
+    for (var i = 0; i < agentCount; i++) {
+      totalWealth += agentList[i].wealth;
+    }
+
+    //Find average wealth
+    var meanWealth = totalWealth / agentCount;
+
+    //Calculate mean difference from the average
+    var totalDiff = 0;
+    for (var i = 0; i < agentCount; i++) {
+      totalDiff += Math.abs(meanWealth - agentList[i].wealth);
+    }
+
+    //Calculate GINI
+    var inequality = totalDiff / (2 * totalWealth);
+
+    return inequality;
+  }
+
+  function calculateFit() {
+
+    var totalDiff = 0;
+    for (var i = 0; i < agentCount; i++) {
+
+      //Calculate distance from ideal for each agent
+      var diff = Math.abs(i - agentList[i].rank);
+
+      //Sum differences from ideal
+      totalDiff += diff;
+    }
+
+    //Find mean difference
+    var meanDiff = totalDiff / agentCount;
+    var scaledMean = meanDiff / agentCount;
+
+    var fit = 1 - (2 * scaledMean);
+    return fit;
+  }
+
+  function paint() {
+    //Paint background
+    context.fillStyle = '#999999';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    //Find the maximum bar height
+    var maxHeight = agentList[agentCount-1].wealth;
+
+    //Determine scaling for bars
+    var scaleHeight = canvas.height/maxHeight;
+    var barWidth = canvas.width/agentCount;
+
+    //Iterate over agents
+    for (var i = 0; i < agentCount; i++) {
+      var width = Math.floor(barWidth);
+      // var height = Math.floor(agentList[i].wealth*scaleHeight);
+      var height = Math.floor(agentList[i].wealth*scaleHeight);
+      var x = Math.floor(i * barWidth);
+      var y = canvas.height - height;
+
+      //Display bar for each agent
+      context.fillStyle = agentList[i].color;
+      context.fillRect(x, y, width, height);
+    }
+
+    //Display GINI
+    context.fillStyle = '#FFFFFF';
+    context.font = '20px Arial';
+    context.fillText("GINI: "+gini.toPrecision(2), 10, 30);
+
+    //Display Fit
+    context.fillStyle = '#FFEE00';
+    context.fillText("Talent Fit: "+fit.toPrecision(2), 10, 50);
+
+  }
+
+  init();
+  //=====================
+}
+simWealthEntropyTalent();
+</script>
 
 
 At this point, our imaginary Conservative speaks up. Let's call her Ayn. 
@@ -35,7 +241,209 @@ This time, we'll color the agents green for wealth. This means that at first, yo
 
 We'll reset our fit metric back to the way it was initially so that it measures the change in an agent's wealth from their initial position. If where you start off in life is a good measure of where you end up, that number should stay high. 
 
+<canvas id="canvasWealthEntropyMoney" width="500" height="200">
+ Your browser does not support the HTML 5 Canvas.
+</canvas>
+<script>
+function simWealthEntropyMoney() {
 
+  //SIM WRAPPER CONFIG =====================
+  var state = 0;
+  var timer;
+  var canvas = document.getElementById('canvasWealthEntropyMoney');
+  var context = canvas.getContext('2d');
+  canvas.addEventListener('click', updateState, false);
+
+  function updateState() {
+    state = (state+1)%3;
+    if (state == 0) {
+      //Reset sim
+      init();
+    } else if (state == 1) {
+      //Run sim
+      timer = setInterval(update, 33);
+    } else {
+      //Stop sim
+      clearInterval(timer);
+    }
+  }
+  //=====================
+  //SIM CODE =====================
+
+  var agentList;
+  var agentCount = 500;
+  var wealthInit = 1000;
+  var exchangesPerUpdate = 100;
+  var maxExchange = 100;
+  var gini = 0;
+  var fit = 0;
+
+  function init() {
+    agentList = new Array();
+
+    //Create agents
+    for (var i = 0; i < agentCount; i++) {
+      var agent = {
+        wealth:(Math.random() * wealthInit * 2),
+        color:"#000000",
+        rank: 0
+      }
+      agentList.push(agent);
+    }
+
+    //Sort agents
+    agentList.sort(function (a,b) {
+      return a.wealth - b.wealth;
+    });
+
+    //Set color for agents based on talent
+    for (var i = 0; i < agentCount; i++) {
+      var agent = agentList[i];
+      var colorVal = Math.floor(((i) * 255.0) / agentCount);
+      agent.color = "rgb(0,"+colorVal+",0)"
+      agent.rank = i;
+    }
+
+    //Calculate wealth ineuality
+    gini = calculateGini();
+
+    //Calculate predictive power of measure
+    fit = calculateFit();
+
+    paint();
+  }
+
+  function update() {
+
+    //Make wealth transfers
+    for (var i = 0; i < exchangesPerUpdate; i++) {
+      var exchangeAmount = Math.random() * maxExchange;
+
+      var indexA = Math.floor(Math.random() * agentCount);
+      var indexB = Math.floor(Math.random() * agentCount);
+      var indexC = Math.floor(Math.random() * agentCount);
+      var agentA = agentList[indexA];
+      var agentB = agentList[indexB];
+      var agentC = agentList[indexC];
+
+      //If A can pay
+      if (agentA.wealth >= exchangeAmount) {
+        agentA.wealth -= exchangeAmount;
+
+        //We pay the supplier with the most money
+        var wealthSum = agentB.wealth + agentC.wealth;
+        var fractionWealthB = agentB.wealth/wealthSum;
+
+        if (Math.random() < fractionWealthB) {
+          agentB.wealth += exchangeAmount;
+        } else {
+          agentC.wealth += exchangeAmount;
+        }
+      }
+    }
+
+    //Sort array by wealth
+    agentList.sort(function (a,b) {
+      return a.wealth - b.wealth;
+    });
+
+    //Calculate wealth inequality
+    gini = calculateGini();
+
+    //Calculate predictive power of measure
+    fit = calculateFit();
+
+    paint();
+  }
+
+  function calculateGini() {
+
+    //Find total wealth
+    var totalWealth = 0;
+    for (var i = 0; i < agentCount; i++) {
+      totalWealth += agentList[i].wealth;
+    }
+
+    //Find average wealth
+    var meanWealth = totalWealth / agentCount;
+
+    //Calculate mean difference from the average
+    var totalDiff = 0;
+    for (var i = 0; i < agentCount; i++) {
+      totalDiff += Math.abs(meanWealth - agentList[i].wealth);
+    }
+
+    //Calculate GINI
+    var inequality = totalDiff / (2 * totalWealth);
+
+    return inequality;
+  }
+
+  function calculateFit() {
+
+    var totalDiff = 0;
+    for (var i = 0; i < agentCount; i++) {
+
+      //Calculate distance from ideal for each agent
+      var diff = Math.abs(i - agentList[i].rank);
+
+      //Sum differences from ideal
+      totalDiff += diff;
+    }
+
+    //Find mean difference
+    var meanDiff = totalDiff / agentCount;
+    var scaledMean = meanDiff / agentCount;
+
+    var fit = 1 - (2 * scaledMean);
+    return fit;
+  }
+
+  function paint() {
+    //Paint background
+    context.fillStyle = '#999999';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    //Sort Array
+    agentList.sort(function (a,b) {
+      return a.wealth - b.wealth;
+    });
+
+    //Find the maximum bar height
+    var maxHeight = agentList[agentCount-1].wealth;
+
+    //Determine scaling for bars
+    var scaleHeight = canvas.height/maxHeight;
+    var barWidth = canvas.width/agentCount;
+
+    //Iterate over agents
+    for (var i = 0; i < agentCount; i++) {
+      var width = Math.floor(barWidth);
+      // var height = Math.floor(agentList[i].wealth*scaleHeight);
+      var height = Math.floor(agentList[i].wealth*scaleHeight);
+      var x = Math.floor(i * barWidth);
+      var y = canvas.height - height;
+
+      //Display bar for each agent
+      context.fillStyle = agentList[i].color;
+      context.fillRect(x, y, width, height);
+    }
+
+    //Display GINI
+    context.fillStyle = '#FFFFFF';
+    context.font = '20px Arial';
+    context.fillText("GINI: "+gini.toPrecision(2), 10, 30);
+
+    //Display Fit
+    context.fillStyle = '#00FF00';
+    context.fillText("Wealth Fit: "+fit.toPrecision(2), 10, 50);
+  }
+
+  init();
+  //=====================
+}
+simWealthEntropyMoney();
+</script>
 
 "This is more like reality," said Karl. "Just look! Those who start rich stay rich."
 
