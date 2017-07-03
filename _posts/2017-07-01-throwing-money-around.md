@@ -132,7 +132,7 @@ What are we seeing here? Unexpectedly, some people are making out like bandits w
 
 Well, it's not really that surprising if you think about it. Consider the first gifts made by each of the five hundred agents in the simulation. It would be weird if every agent chose a partner to give to such that everyone received exactly one dollar and nobody got left out. So some people are going to end up with more money than others early on in the game. Then consider the second round of gifts. It would be just as strange if the second round of offered dollars was perfectly balanced to counteract the imbalance of the first round. So within two rounds of everyone handing out money, we already know that some people are going to get ahead. And the bigger that asymmetry gets, the less likely that the gifts that follow are going to make that imbalance magically go away. 
 
-What I think's interesting about this distribution of wealth is how much it looks like the ones that show up in real life. Take a look at this plot of the UK's income for [instance](https://www.thenetworkforsocialchange.org.uk/resources/am-i-rich.html). 
+What I think's interesting about this pattern is how much it looks like the ones that show up in real life. Take a look at this plot of the UK's wealth distribution for [instance](https://www.thenetworkforsocialchange.org.uk/resources/am-i-rich.html). 
 
 It's a little uncanny. Unsurprisingly, economists have used this kind of game to model national economies. And why not? You can think of this model as capturing one half of what makes an economy run. Every transfer of money is an instance of someone paying for something. We're just not bothering to model the services that they're getting in return for their cash. 
 
