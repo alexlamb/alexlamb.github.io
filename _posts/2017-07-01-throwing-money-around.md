@@ -19,16 +19,13 @@ Well, it's not really that surprising if you think about it. Consider the first 
 What I think's interesting about this distribution of wealth is how much it looks like the ones that show up in real life. Take a look at this plot of the UK's income for [instance](https://www.thenetworkforsocialchange.org.uk/resources/am-i-rich.html). 
 
 
+It's a little uncanny. Unsurprisingly, economists have used this kind of game to model national economies. And why not? You can think of this model as capturing one half of what makes an economy run. Every transfer of money is an instance of someone paying for something. We're just not bothering to model the services that they're getting in return for their cash. 
+
+But to make our model of a national economy more realistic, let's add some extra realism. For starters, not everything in life costs a dollar, and not everyone starts off with the same amount of money.
+
 
 
 The GINI number in the top left is a measure of wealth inequality in the population.
-
-In fact, this kind of game has been used to model national economies. 
-
-You can think of this game as capturing one half of what makes an economy run. We're seeing people paying for things. We're just not bothering to model the services that they're getting. And from a big picture distribution standpoint, that doesn't seem to matter much.
-
-But to make our model of a national economy, let's add a little more subtlelty. Because not everything in life costs a dollar, and not everyone starts off with the same amount of money.
-
 
 
 
