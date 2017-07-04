@@ -3,9 +3,9 @@ published: false
 ---
 Welcome back to my thrilling blog series on wealth inequality modeling! If you've been following the story so far, you know that our notional Conservative and Progressive voices, Ayn and Karl, have decided to test out their dueling ideas about what drives wealth inequality in a composite model that compensates both for the effects of cumulative wealth, and for the presence of talent. 
 
-To make this work, every time we pick a pair of candidate money-recipients, B and C, we'll take the average of the two probabilities. That way, the likelihood of B being chosen is going to be a joint function of both their wealth and their talent. We're not going to try to weight the selection process one way or another. That would make things less simple and more subjective. 
+To make this work, we'll have to change our sim a little. How about this? Every time we pick a pair of candidate money-recipients, B and C, we first figure out the probabilities of their receiving the money under one system or the other. Then we take the average of those two probabilities. We're not going to try to weight the selection process one way or another. That would make things less simple and more subjective. 
 
-To show what's going on, we're decorating every bar in our distribution with two colors this time. The top half of each bar shows the talent for that individual. The bottom half shows how much money they start out with. And now we have two measures of fit: one for talent and one for initial wealth. Let's kick the model off and see what happens.
+To show what's going on, we're decorating every bar in our distribution chart with two colors this time. The top half of each bar shows the talent for that individual. The bottom half shows how much money they start out with. And now we have two measures of fit: one for talent and one for initial wealth. Let's kick the model off and see what happens.
 
 <canvas id="canvasWealthEntropyBoth" width="500" height="200">
  Your browser does not support the HTML 5 Canvas.
@@ -274,7 +274,7 @@ function simWealthEntropyBoth() {
 simWealthEntropyBoth();
 </script>
 
-At first, things are looking good for Karl, but as the simulation rolls on, Ayn starts doing better. Was this what you expected?
+At first, things are looking good for Karl, but as the simulation rolls on, Ayn starts doing better. Was this what you expected? It surprised me. 
 
 "See?" says Ayn. "Talent will out!"
 
@@ -282,7 +282,7 @@ At first, things are looking good for Karl, but as the simulation rolls on, Ayn 
 
 "Life's not fair!" says Ayn. "Get used to it."
 
-"What I mean is, everyone is immortal in this model. The whole problem with the kind of society you advocate is that wealth is usually inherited, not won. And the talent of one individual isn't a good guide for the talent of their offspring. If you really want to do justice to the effect I'm talking about, you'll have to replace agents with their offspring from time to time."
+"For starters, the whole idea of objective talent is naive and objectionable. But worse, everyone in this model is immortal. The whole problem with the kind of society you advocate is that wealth ends up being inherited, not won. And the talent for any one individual is a poor guide for the qualities of their children. That means you end up with individuals with mediocre talent but massive advantages. If you really want to do justice to the effect I'm talking about, you'll have to replace agents with their offspring from time to time."
 
 "Alright," says Ayn. "I'll buy that. But the model is getting more complicated, and therefore more specific. The more moving parts you put in a simulation to make it the way you want it, the less convincing the results."
 
@@ -610,6 +610,6 @@ function simWealthEntropyDeath() {
 simWealthEntropyDeath();
 </script>
 
-At this point, neither Ayn nor Karl is looking happy. Our model has become so neutral that it's not giving a clear easy answer either way. We haven't found an easy win to justify either ideology. However, there's something that Ayn and Karl are both missing. Can you spot it as the simulation runs?
+At this point, neither Ayn nor Karl is looking happy. Our model has become so neutral that it's not giving us a clear answer. We haven't found an easy win to justify either ideology. Ayn thinks we're bending the model too far to keep the effects of talent suppressed. Karl thinks the whole idea of talent without a social context is ridiculous. However, there's something that Ayn and Karl are both missing. 
 
-Next time, I'll let you in on the secret of what neither of our political pundits have noticed.
+Take a look at the sim running and see if you think there's something odd going on. Next time, I'll let you in on the secret of what neither of our political pundits have noticed.
