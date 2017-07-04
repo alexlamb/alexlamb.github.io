@@ -19,7 +19,7 @@ At first, things are looking good for Karl, but as the simulation rolls on, Ayn 
 
 "What I mean is, everyone is immortal in this model. The whole problem with the kind of society you advocate is that wealth is usually inherited, not won. And the talent of one individual isn't a good guide for the talent of their offspring. If you really want to do justice to the effect I'm talking about, you'll have to replace agents with their offspring from time to time."
 
-"Alright," says Ayn. "But the model is getting more complicated, and therefore more specific. The more moving parts you put in a simulation, the more likely it is to be wrong."
+"Alright," says Ayn. "I'll buy that. But the model is getting more complicated, and therefore more specific. The more moving parts you put in a simulation, the more likely it is to be wrong."
 
 "A model should be simple, but not so simple that it leaves out important parts of the phenomena you're modeling," Karl retorts.
 
