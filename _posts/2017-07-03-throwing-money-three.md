@@ -19,23 +19,20 @@ At first, things are looking good for Karl, but as the simulation rolls on, Ayn 
 
 "What I mean is, everyone is immortal in this model. The whole problem with the kind of society you advocate is that wealth is usually inherited, not won. And the talent of one individual isn't a good guide for the talent of their offspring. If you really want to do justice to the effect I'm talking about, you'll have to replace agents with their offspring from time to time."
 
-"Alright," says Ayn. "I'll buy that. But the model is getting more complicated, and therefore more specific. The more moving parts you put in a simulation, the less likely it is 
-
-
-
-."
+"Alright," says Ayn. "I'll buy that. But the model is getting more complicated, and therefore more specific. The more moving parts you put in a simulation, the less powerful the result."
 
 "A model should be simple, but not so simple that it leaves out important parts of the phenomena you're modeling," Karl retorts.
 
-How are we going to add Karl's extra details to our simulation? Easy. After every cash transaction, we'll give our cash donor a small chance of dying. If A dies, his wealth is immediately passed on to his offspring, A Junior. How will we determine A Junior's talent? Let's take his parent's talent and some other random talent value and take the average. That's a simple approach and it's also vaguely justifiable. A person's skills and temperament are usually some function of their two parents.
+How are we going to add Karl's extra details to our simulation? Easy. After every cash transaction, we'll give our cash donor a small chance of dying. If A dies, his wealth is immediately passed on to his offspring, A Junior. How will we determine A Junior's talent? Let's take his parent's talent and some other random talent value and take the average. That's a simple approach and it's also vaguely justifiable. A person's skills and temperament are usually some function of their two parents after all.
 
-We'll have to add in a little more code to track our measures of fit. At the end of a round of exchanges, we'll have to figure out what each agent was born with and how much relative talent they have so we can figure out what factors are playing a part in their failure or success. But that's not hard. We already have code for that built into the sim that we can repurpose.
+We'll have to add in a little more code to track our measures of fit. At the end of a round of exchanges, we'll have to figure out what each agent was born with and how much relative talent they have so we can determine what factors are playing a part in their failure or success. But that's not hard. We already have code for that built into the sim that we can repurpose.
 
-How do we decide how long agents should live? After all, an agent's lifespan will determine how long they have for their talent to make a difference. Rather than try to math it out, let's choose something that seems notionally fair. How about one over the number of agents in the sim? That'll do for starters. 
+How do we decide how long agents should live? After all, an agent's lifespan will determine how long they have for their talent to make a difference. Rather than try to math it out, let's choose something that seems notionally fair. How about a death probability that's one over the number of agents in the sim? That'll do for starters. 
 
 Want to see how the model has changed? Click the sim to find out. 
 
 
+
 At this point, neither Ayn nor Karl is looking happy. Our model has become so neutral that it's not giving a clear easy answer either way. We haven't found an easy win to justify either ideology. However, there's something that Ayn and Karl are both missing. Can you spot it as the simulation runs?
 
-Next time, I'll let you in on the secret of what neither of our political pundits have spotted.
+Next time, I'll let you in on the secret of what neither of our political pundits have noticed.
