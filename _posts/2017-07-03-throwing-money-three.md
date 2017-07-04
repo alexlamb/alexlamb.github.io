@@ -9,7 +9,7 @@ To show what's going on, we're coloring every bar in our distribution with two c
 
 
 
-At first, things are looking good for Karl, but as the simulation rolls on, Ayn starts doing better.
+At first, things are looking good for Karl, but as the simulation rolls on, Ayn starts doing better. Was this what you expected?
 
 "See?" says Ayn. "Talent will out!"
 
