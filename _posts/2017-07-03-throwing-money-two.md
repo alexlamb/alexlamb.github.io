@@ -218,7 +218,6 @@ function simWealthEntropyTalent() {
 simWealthEntropyTalent();
 </script>
 
-
 At this point, our imaginary Conservative speaks up. Let's call her Ayn. 
 
 "Look, see?" she says. "Talent rises to the top, just like you'd expect. The distribution is not that different to what it was before, but now those who work harder or who have more innate excellence are being appropriately rewarded. This is what you see in the data from a modern market-driven economy, and it's as it should be."
