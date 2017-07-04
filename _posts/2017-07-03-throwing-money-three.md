@@ -1,7 +1,7 @@
 ---
 published: false
 ---
-Welcome back to my thrilling blog series on wealth inequality modeling! If you've been following the story so far, you know that our notional Conservative and Progressive voices, Ayn and Karl, have decided to test out their dueling ideas in a composite model that compensates both for the effects of cumulative wealth, and for the presence of talent. 
+Welcome back to my thrilling blog series on wealth inequality modeling! If you've been following the story so far, you know that our notional Conservative and Progressive voices, Ayn and Karl, have decided to test out their dueling ideas about what drives wealth inequality in a composite model that compensates both for the effects of cumulative wealth, and for the presence of talent. 
 
 To make this work, every time we pick a pair of candidate money-recipients, B and C, we'll take the average of the two probabilities. That way, the likelihood of B being chosen is going to be a joint function of both their wealth and their talent. We're not going to try to weight the selection process one way or another. That would make things less simple and more subjective. 
 
