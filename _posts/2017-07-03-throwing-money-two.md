@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 In the last post, I showed you a very simple simulation that seems to reproduce, at least to first approximation, the kind of wealth distribution that show up in real economies. To do this, all we had to do was give a bunch of agents some money and let them hand it around at random. Magic! 
 
