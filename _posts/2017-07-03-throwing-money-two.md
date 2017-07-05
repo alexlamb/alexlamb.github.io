@@ -446,7 +446,7 @@ function simWealthEntropyMoney() {
 simWealthEntropyMoney();
 </script>
 
-"This is more like reality," said Karl. "Just look! Those who start rich stay rich."
+"This is more like reality," says Karl. "Just look! Those who start rich stay rich."
 
 "Except, once again, you're leaving out talent," says Ayn. "The only way to decide which model wins is via competition. Let's put both behaviors into the model and see which one dominates."
 
