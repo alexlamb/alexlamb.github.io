@@ -28,3 +28,7 @@ So what have we learned so far? We've learned that while talent and class have a
 
 What the sim also suggests is that in an environment where both talent and prior wealth matter, all things being equal, prior wealth is likely to matter more than talent for the rich. 
 
+Have we proved that? Not at all. A simulation like this is nothing more than a thought experiment. To turn this result into publishable science, you'd need to justify the model, test variants of it, compare it to the existing literature, compare it to data for the world if such data exists, and maybe throw in a proof or two. 
+
+But this blog isn't about doing professional science. It's about massively boosting our intuition with a relatively modest effort investment. 
+
