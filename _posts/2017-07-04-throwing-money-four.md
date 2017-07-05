@@ -26,9 +26,10 @@ The way I see it is that when we simply ingest news that's thrust at us by the w
 
 So what have we learned so far? We've learned that while talent and class have an approximately equal effect in our simulation the way we've set it up, the effects *aren't equal* across the entire population. We can't just take a measure that looks at the whole population and expect it to give us answers about the behavior or traits of a few. Another way to say this is that average values bury information. 
 
-What the sim also suggests is that in an environment where both talent and prior wealth matter, all things being equal, prior wealth is likely to matter more than talent for the rich. 
+What the sim also suggests is that in an environment where both talent and prior wealth matter, all things being equal, prior wealth is likely to matter more than talent for the top tiers of society. 
 
-Have we proved that? Not at all. A simulation like this is nothing more than a thought experiment. To turn this result into publishable science, you'd need to justify the model, test variants of it, compare it to the existing literature, compare it to data for the world if such data exists, and maybe throw in a proof or two. 
+Have we proved that? Not at all. A simulation like this is nothing more than a thought experiment. To turn this result into publishable science, you'd need to justify the model, test variants of it, compare it to the existing literature, compare it to data for the world if such data exists, and maybe throw in a proof or two. But this blog isn't about doing professional science. It's about massively boosting our intuition with a relatively modest effort investment. And having fun.
 
-But this blog isn't about doing professional science. It's about massively boosting our intuition with a relatively modest effort investment. 
+
+
 
