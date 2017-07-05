@@ -236,7 +236,7 @@ At this point, it's probably appropriate to introduce a Progressive voice. Let's
 
 "Only for those at the top," Karl points out. "Besides, this *isn't* what happens in real life. In life, the money you can make is largely determined by how much you started out with. If we wanted to build an accurate model of society, we'd do that."
 
-So lets try Karl's idea. This time, instead of A deciding who receives cash based on their talent, let's have him decide based on how much money B and C already own. We can imagine that an agent's money pile reflects the size of their marketing budget, perhaps, or their reputation for success. 
+So lets try Karl's idea. This time, instead of A deciding who receives cash based on their talent, let's have him decide based on how much money B and C already have. We can imagine that an agent's money pile reflects the size of their marketing budget, perhaps, or their reputation for success. 
 
 This time, we'll color the agents green for wealth. This means that at first, you can't see the individual agents, because they're all arranged in order of their bank balance. However, that won't last long once money starts changing hands. 
 
