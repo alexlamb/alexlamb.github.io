@@ -649,7 +649,6 @@ function simWealthEntropyTop() {
 simWealthEntropyTop();
 </script>
 
-
 The numbers are different! Our functions weight every member of society equally, but when we look at the output plot, we're focusing on what makes people rich. But before we start to feel to smug about having spotted something important, we should ask why we were focusing on the rich in the first place. There are probably several reasons. The bars for rich people are taller and therefore easier to see. But also because we're socially programmed to attend to that part of the distribution that corresponds to the wealthy. 
 
 I think that's intersting. At some level, this entire simulation has become more about what makes someone rich than about what makes someone poor. And this is much like life, I think. It's easy to see the impacts of extreme wealth, because it tends to be obvious in our environment. It's often much harder to see and understand the effects of poverty.
@@ -669,7 +668,3 @@ Another way to say it is that, if we believe our models, being smart helps get y
 Have we proved all this definitively? Not at all. A crude simulation like this is nothing more than a thought experiment. To turn this result into publishable science, you'd need to justify the model, test variants of it, compare it to the existing literature, compare it to data for the world if such data exists, and maybe throw in a proof or two. But this blog isn't about doing professional-level science. It's about massively boosting our intuition with a relatively modest effort investment and having fun as we do it.
 
 And in terms of intuition boosting, we've only scratched the surface. The sheer fact that the random models we've been looking at behave the way that they do reveals something deep and powerful about how economic systems work. In the next post, I'll explain what I mean.
-
-
-
-
