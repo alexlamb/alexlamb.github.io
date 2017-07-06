@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 Welcome back to my thrilling blog series on wealth inequality modeling! If you've been following the story so far, you know that our notional Conservative and Progressive voices, Ayn and Karl, have decided to test out their dueling ideas about what drives wealth inequality in a composite model that compensates both for the effects of cumulative wealth, and for the presence of talent. 
 
