@@ -610,6 +610,14 @@ function simWealthEntropyDeath() {
 simWealthEntropyDeath();
 </script>
 
-At this point, neither Ayn nor Karl is looking happy. Our model has become so neutral that it's not giving us a clear answer. We haven't found an easy win to justify either ideology. Ayn thinks we're bending the model too far to keep the effects of talent suppressed. Karl thinks the whole idea of talent without a social context is ridiculous. However, there's something that Ayn and Karl are both missing. 
+"I win!" says Ayn.
+
+"Not so fast!" says Karl. "Look at those results. They're wobbling around all over the place. Let's run it again."
+
+"The same thing will happen," says Ayn.
+
+It doesn't. The results are less stable than they were before. Talent appears to have an edge overall, but without us running a batch of experiments, it'd be hard to say for sure. 
+
+Needless to say, at this point, neither Ayn nor Karl is looking happy. Our model has become so neutral that it's not giving us a clear answer. We haven't found an easy win to justify either ideology. Ayn thinks we're bending the model too far to keep the effects of talent suppressed. Karl thinks the whole idea of talent without a social context is ridiculous. However, there's something that Ayn and Karl are both missing. 
 
 Take a look at the sim running and see if you think there's something odd going on. Next time, I'll let you in on the secret of what neither of our political pundits have noticed.
