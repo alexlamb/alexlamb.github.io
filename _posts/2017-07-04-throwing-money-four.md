@@ -663,7 +663,7 @@ So what have we learned so far? We've learned that while talent and class have a
 
 What the sim also suggests is that in an environment where both talent and prior wealth matter, all things being equal, prior wealth is likely to matter more than talent for the top tiers of society. In other words, the richer someone is, the less likely it is to exclusively a product of their abilities. 
 
-Another way to say it is that, if we believe our models, being smart helps get you out of the gutter but coming from money is what gives you a chance at being president. Ayn – our Conservative voice – was right about what it takes to not be poor, while Karl – our Progressive – had a better model of how the top ten percent operates. This strikes me as a little ironic. 
+Another way to say it is that, if we believe our models, being smart helps get you out of the gutter but coming from money is what gives you a chance at being president. Ayn – our Conservative voice – was right about what it takes to not be dirt poor, while Karl – our Progressive – had a better model of how the top ten percent operates. This strikes me as a little ironic. 
 
 Have we proved all this definitively? Not at all. A crude simulation like this is nothing more than a thought experiment. To turn this result into publishable science, you'd need to justify the model, test variants of it, compare it to the existing literature, compare it to data for the world if such data exists, and maybe throw in a proof or two. But this blog isn't about doing professional-level science. It's about massively boosting our intuition with a relatively modest effort investment and having fun as we do it.
 
