@@ -2,7 +2,7 @@
 published: false
 ---
 
-This time, I don't have any simulations to share. Instead, I want to reflect on the sims that have already appeared in this series and follow through on a promise I made last time: to reveal what I thought was the deeper truth that these economic models provide. 
+This time, I don't have any simulations to share. Instead, I'd like to reflect on the sims that have already appeared in this series and follow through on a promise I made last time: to reveal what I thought was the deeper truth that these economic models provide. 
 
 But to make that point, it'll help if I first cover a few other bases about what I've been trying to do.
 
@@ -20,23 +20,45 @@ The next point I want to cover is about the reason for it all. You might say *wh
 
 The answer is simple. We don't try to model *all* of it. Just certain important parts. And furthermore, the idea that you can't model things like human society presumes that if you put a lot of complicated people together that the combined result must necessarily be *more* complicated. 
 
-But the world doesn’t work that way and we know it. Consider traffic patterns. Every driver of a car is a complex, nuanced individual with a completely different set of desires and goals to the others around her. However, all traffic jams look pretty much the same. 
+But the world doesn’t work that way. Consider traffic patterns. Every driver of a car is a complex, nuanced individual with a completely different set of desires and goals to the others around her. However, all traffic jams look pretty much the same. 
 
-This is because every pattern in the world that’s *emergent* - that seems to grow out of the movement of many elements - operates as a kind of filter. Only certain actions that one person can take will result in visible transformations when we look at everyone together. The rest of their differences get washed out. 
+This is because every pattern in the world that’s *emergent* (that seems to grow out of the behavior of many elements) operates as a kind of filter. Only certain actions that one person can take will result in visible changes when we look at a crowd. The rest of their differences get washed out. 
 
-Human social systems often work like this. Whenever you vote or buy soap, the options presented to you are finite. The reasons for your choices can be totally different from everyone else's, but effects will still aggregate. Just having finite choices, or having to compensate for the choices of others, means that the behavior of the social whole is often different from its parts.
+Human social systems often work like this. Whenever you vote or buy soap, the options presented to you are finite. The reasons for your choices can be totally different from everyone else's, but certain effects will aggregate and others won't. Just having finite choices, or having to compensate for the choices of others, means that the behavior of the social whole is often different from its parts.
 
 ## Testing ideas makes us wiser
-There's another key reason to bother, which hooks up with something I mentioned in the last post. And it's this: even if the models we make don't capture the phenomena we actually see in the world, they still force us to test our ideas about the world, and figure out what our ideas actually entail.
+There's another key reason to bother with models, which hooks up with something I mentioned in the last post. And it's this: even if the models we make don't capture the phenomena we actually see in the world, they still force us to test our ideas and figure out what they actually *mean*.
 
-There has recently been some lovely psychology research that shows how people imagine they know more than they [do](https://www.economist.com/news/books-and-arts/21720262-human-cleverness-arises-distributing-knowledge-between-minds-making-people-think). And this gap in our understanding of the world is never more acute than when we're making decisions about the society we're a part of, or systems in the world that are far larger than we are, like the environment for instance. We usually never our ideas about such things because we imagine they can’t be tested. But if an idea, when expressed in a model, doesn’t behave the way that guessed, then there *must* be something we’re missing. 
+There has recently been some lovely psychology research that shows how people imagine they know more than they [do](https://www.economist.com/news/books-and-arts/21720262-human-cleverness-arises-distributing-knowledge-between-minds-making-people-think). And this gap in our understanding of the world is never more acute than when we're making decisions about the society we're a part of, or systems in the world that are far larger than we are, like the environment. We usually don't doubt our beliefs about such things because we imagine an ad-hoc theory or something we read on the web is the best we can do. But if an idea, when expressed in a model, doesn’t behave the way that guessed, then there *must* be something we’re missing. 
 
 What this means is that costly experiments and laborious data collection aren’t always necessary to improve our understanding of the world. They certainly help, but the easiest, cheapest place to refine our thinking is to use the tools right in front of us. Armchair pontification is cheap. Model-driven pontification is slight less cheap, which is a great start. 
 
 ## Look deep
-Which brings me to my core point about the simulations I've been posting this week.
+Which brings me to my core point about the simulations I've been posting this week: clues about how economies work are right in front of us in these models. If we think skeptically and test our understanding of the world, we can start to notice things that even many experts miss. 
 
+What we've learned is that the easiest way to generate a realistic wealth distribution is to basically play out the random motion of cash on a population. In other words: the action of entropy. Furthermore, that entropic process never runs backwards, because, after all, entropy seldom does. These wealth distributions have undergone something that physicists call called *symmetry breaking*. 
 
-Don’t just look at the specifics. Look at the patterns: symmetry breaking.
-Wealth distributions are the clue.
-Why do we expect markets to produce magic answers?
+When Thomas Piketty came out with his famous [book](https://www.economist.com/blogs/economist-explains/2014/05/economist-explains), there were economists lining up to pour scorn on his ideas. But the process of escalating inequality he observes in the data he collected is just like the one we've modeled here. 
+
+For me, that raises two questions:
+
+One: If he's wrong, how come wealth ineqality doesn't behave like the action of entropy, why is the curve that it produces *exactly like it*? 
+
+Two: Given what we see here, how can we possibly believe in the power of the free market to pick the right prices for things? 
+
+It seems pretty obvious here that in a free market, power is going to slide into the  hands of a few. At the creation of a market, when every trader has relatively equal power, the prices for things will reflect the needs of the many. But over time, it's pretty obvious that the prices for things will reflect the desires of the few. Because only a few will have the spare resources needed to set prices. 
+
+_Believing in the power of unrestrained free markets to reflect fair prices indefinitely is equivalent to believing that entropy can go backwards._
+
+Furthermore adding talent or business acumen to that picture only accelerates this process. 
+
+"Hang on a minute!" says our Conservative voice Ayn. "If that's true, how come we don't see that in markets? How come stock exchanges work at all?"
+
+The point of Piketty's book is that we *do* see it. How come markets work at all? Because large things like national economies take a long time to fall over. You can imagine a fair economy like a pencil balanced on its end. It has loads of potential energy. Once it chooses a direction to fall, potential energy gets converted into kinetic energy. Or in the case of the market, goods can be exchanged at reasonable prices. But then the pencil hits the table, bounces, and stops. Or, in market terms, you get something like the Credit Crunch and its aftermath. 
+
+And how come we have viable markets in the first place? Because when truly disruptive events come along, like the Industrial Revolution or World War Two, they create relatively equal envionments in which a large number of parties can engage in the process of trying to better their lot.
+
+The problem we have now is that that's not where we are. Do we have to wait for a massive disruptive event to come along to fix things? I don't know. Maybe a modest disruptive event will do. I hope so. 
+
+I want to come back to this point with models that more closely resemble actual markets because I want to test my understanding. Maybe there's something I've missed. But in the mean time, the meta-point stands: we understand the world when we look past just the specifics in front of us, and start looking at the higher-level patterns. 
+
