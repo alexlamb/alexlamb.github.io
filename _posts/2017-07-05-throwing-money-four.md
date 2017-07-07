@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 In the last post, I left you with a mystery. We had built a small model of money moving around in a society, and were trying to figure out which had a bigger impact: individual talent or inherited wealth. I told you we were missing something significant. 
 
