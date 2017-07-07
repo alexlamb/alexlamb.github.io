@@ -48,11 +48,11 @@ Two: Given what we see here, how can we possibly believe in the power of the fre
 
 It seems pretty obvious here that in a free market, power is going to slide into the  hands of a few. At the creation of a market, when every trader has relatively equal power, the prices for things will reflect the needs of the many. But over time, the prices for things will inevitably start to reflect the desires of the few because only a few will have the spare resources required to set prices. Furthermore, adding talent or business acumen to that picture only accelerates this process. 
 
-Thus, believing in the power of unrestrained free markets to reflect fair prices indefinitely is equivalent to believing that entropy can go backwards. 
+Thus, *believing in the power of unrestrained free markets to reflect fair prices indefinitely is equivalent to believing that entropy can go backwards.*
 
 "Hang on a minute!" says our Conservative voice, Ayn. "If that's true, how come we don't see that in markets? How come stock exchanges work at all? I don't buy it!"
 
-The point of Piketty's book is that we *do* see it. How come markets work at all? Because large things like national economies take a long time to fall over. You can imagine a fair economy like a pencil balanced on its end. It has loads of potential energy. Once it chooses a direction to fall, potential energy gets converted into kinetic energy. Or in the case of the market, goods can be exchanged at reasonable prices. But then the pencil hits the table, bounces, and stops. Or, in market terms, you get something like the Credit Crunch and its aftermath. Wealth accretes around a handful of billionaires. 
+The point of Piketty's book is that we *do* see it. How come markets work? Because large things like national economies take a long time to fall over. You can imagine a fair economy like a pencil balanced on its end. It has loads of potential energy. Once it chooses a direction to fall, potential energy gets converted into kinetic energy. Or in the case of the market, goods can be exchanged at reasonable prices. But then the pencil hits the table, bounces, and stops. Or, in market terms, you get something like the Credit Crunch and its aftermath. Wealth accretes around a handful of billionaires. 
 
 "Then how come we have viable markets in the first place?" says Ayn.
 
@@ -60,6 +60,6 @@ Because when truly disruptive events come along, like the Industrial Revolution 
 
 "So we need a revolution," says Karl. "A planned economy!"
 
-I don't think so. From what I've seen, top-down controlled economies tend to end up with inequality curves just like the ones we just looked at. If anything, they seem even steeper. The inexorable logic of inequality doesn't really care what's being traded, whether it's money or political favors in a single-party system. I think we need something else. 
+I don't think so. From what I've seen, top-down controlled economies tend to end up with inequality curves just like the ones we just looked at. If anything, they seem even steeper. The inexorable logic of inequality doesn't really care what's being traded, whether it's money or political favors in a single-party system. I suspect we need something else. 
 
 I want to come back to this topic with models that more closely resemble actual markets because I'd like to know what *would* work. But in the mean time, the meta-point stands: we understand the world when we look past just the specifics in front of us, and start investigating the higher-level patterns. When we exercise our curiosity, we are stronger and wiser. And if you've read this far, you're already doing that. So I salute you, dear Reader. Thank you for going on this journey with me. Next time, I'll give the wealth models a rest, and post about something a little different.
