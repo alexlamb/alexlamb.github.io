@@ -36,7 +36,7 @@ What this means is that costly experiments and laborious data collection aren’
 ## Look deep
 Which brings me to my core point about the simulations I've been posting this week: clues about how economies work are right in front of us in these models. If we think skeptically and test our understanding of the world, we can start to notice things that even many experts miss. 
 
-What we've learned is that the easiest way to generate a realistic wealth distribution is to basically play out the random motion of cash on a population. In other words: the action of entropy. Furthermore, that entropic process never runs backwards, because, after all, entropy seldom does. These wealth distributions have undergone something that physicists call called *symmetry breaking*. 
+What we've learned is that the easiest way to generate a realistic wealth distribution is to basically play out the random motion of cash on a population. In other words: the action of *entropy*. Furthermore, that entropic process never runs backwards, because, after all, entropy seldom does. These wealth distributions have undergone something that physicists call called *symmetry breaking*. 
 
 When Thomas Piketty came out with his famous [book](https://www.economist.com/blogs/economist-explains/2014/05/economist-explains), there were economists lining up to pour scorn on his ideas. But the process of escalating inequality he observes in the data he collected is just like the one we've modeled here. 
 
@@ -46,19 +46,26 @@ One: If he's wrong, how come wealth ineqality doesn't behave like the action of 
 
 Two: Given what we see here, how can we possibly believe in the power of the free market to pick the right prices for things? 
 
-It seems pretty obvious here that in a free market, power is going to slide into the  hands of a few. At the creation of a market, when every trader has relatively equal power, the prices for things will reflect the needs of the many. But over time, it's pretty obvious that the prices for things will reflect the desires of the few. Because only a few will have the spare resources needed to set prices. 
+It seems pretty obvious here that in a free market, power is going to slide into the  hands of a few. At the creation of a market, when every trader has relatively equal power, the prices for things will reflect the needs of the many. But over time, it's pretty obvious that the prices for things will reflect the desires of the few. Because only a few will have the spare resources required to set prices. Furthermore adding talent or business acumen to that picture only accelerates this process. 
 
-_Believing in the power of unrestrained free markets to reflect fair prices indefinitely is equivalent to believing that entropy can go backwards._
-
-Furthermore adding talent or business acumen to that picture only accelerates this process. 
+Thus, believing in the power of unrestrained free markets to reflect fair prices indefinitely is equivalent to believing that entropy can go backwards. 
 
 "Hang on a minute!" says our Conservative voice Ayn. "If that's true, how come we don't see that in markets? How come stock exchanges work at all?"
 
-The point of Piketty's book is that we *do* see it. How come markets work at all? Because large things like national economies take a long time to fall over. You can imagine a fair economy like a pencil balanced on its end. It has loads of potential energy. Once it chooses a direction to fall, potential energy gets converted into kinetic energy. Or in the case of the market, goods can be exchanged at reasonable prices. But then the pencil hits the table, bounces, and stops. Or, in market terms, you get something like the Credit Crunch and its aftermath. 
+The point of Piketty's book is that we *do* see it. How come markets work at all? Because large things like national economies take a long time to fall over. You can imagine a fair economy like a pencil balanced on its end. It has loads of potential energy. Once it chooses a direction to fall, potential energy gets converted into kinetic energy. Or in the case of the market, goods can be exchanged at reasonable prices. But then the pencil hits the table, bounces, and stops. Or, in market terms, you get something like the Credit Crunch and its aftermath. Wealth accretes to a point. 
 
-And how come we have viable markets in the first place? Because when truly disruptive events come along, like the Industrial Revolution or World War Two, they create relatively equal envionments in which a large number of parties can engage in the process of trying to better their lot.
+"Then how come we have viable markets in the first place?" says Ayn.
 
-The problem we have now is that that's not where we are. Do we have to wait for a massive disruptive event to come along to fix things? I don't know. Maybe a modest disruptive event will do. I hope so. 
+Because when truly disruptive events come along, like the Industrial Revolution or World War Two, they create relatively equal envionments in which a large number of parties can engage in the process of trying to better their lot. The problem we have now is that that's not where we are. 
+
+"So we need a revolution!" says Karl.
+
+
+
+
+I'm not sure he
+
+Do we have to wait for a massive disruptive event to come along to fix things? I don't know. Maybe a modest disruptive event will do. I hope so. 
 
 I want to come back to this point with models that more closely resemble actual markets because I want to test my understanding. Maybe there's something I've missed. But in the mean time, the meta-point stands: we understand the world when we look past just the specifics in front of us, and start looking at the higher-level patterns. 
 
