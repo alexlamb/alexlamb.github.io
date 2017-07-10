@@ -24,7 +24,7 @@ But the world doesn’t work that way. Consider traffic patterns. Every driver o
 
 This is because every pattern in the world that’s *emergent* (that seems to grow out of the behavior of many elements) operates as a kind of filter. Only certain actions that one person can take will result in visible changes when we look at a crowd. The rest of their differences get washed out. 
 
-Human social systems often work like this. Whenever you vote or buy soap, the options presented to you are finite. The reasons for your choices can be totally different from everyone else's, but certain effects will aggregate and others won't. Just having finite choices, or having to compensate for the choices of others, means that the behavior of the social whole is often different from its parts.
+Human social systems often work like this. Whenever you vote or buy soap, the options presented to you are finite. The reasons for your choices can be totally different from everyone else's, but certain effects will aggregate and others won't. Just having finite choices, or having to compensate for the choices of others, means that the behavior of the social whole is often different from that of its parts.
 
 ## Testing ideas makes us wiser
 There's another key reason to bother with models, which hooks up with something I mentioned in the last post. And it's this: even if the models we make don't capture the phenomena we actually see in the world, they still force us to test our ideas and figure out what they actually *mean*.
