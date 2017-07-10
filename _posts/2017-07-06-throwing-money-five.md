@@ -29,24 +29,24 @@ Human social systems often work like this. Whenever you vote or buy soap, the op
 ## Testing ideas makes us wiser
 There's another key reason to bother with models, which hooks up with something I mentioned in the last post. And it's this: even if the models we make don't capture the phenomena we actually see in the world, they still force us to test our ideas and figure out what they actually *mean*.
 
-There has recently been some lovely psychology research that shows how people imagine they know more than they [do](https://www.economist.com/news/books-and-arts/21720262-human-cleverness-arises-distributing-knowledge-between-minds-making-people-think). And this gap in our understanding of the world is never more acute than when we're making decisions about the society we're a part of, or systems in the world that are far larger than we are, like the environment. We usually don't doubt our beliefs about such things because we imagine an ad-hoc theory or something we read on the web is the best we can do. But if an idea, when expressed in a model, doesn’t behave the way that guessed, then there *must* be something we’re missing. 
+There has recently been some lovely psychology research that shows how people imagine they know more than they [do](https://www.economist.com/news/books-and-arts/21720262-human-cleverness-arises-distributing-knowledge-between-minds-making-people-think). This gap in our understanding of the world is never more acute than when we're making decisions about the society we're a part of, or systems in the world that are far larger than we are, like the environment. We usually don't doubt our beliefs about such things because we imagine an ad-hoc theory or something we read on the web is the best we can do. But if an idea, when expressed in a model, doesn’t behave the way that guessed, then there *must* be something we’re missing. 
 
 What this means is that costly experiments and laborious data collection aren’t always necessary to improve our understanding of the world. They certainly help, but the easiest, cheapest place to refine our thinking is to use the tools right in front of us. Armchair pontification is cheap. Model-driven pontification is slight less cheap, which is a great start. 
 
 ## Look deep
 Which brings me to my core point about the simulations I've been posting this week: clues about how economies work are right in front of us in these models. If we think skeptically and test our understanding of the world, we can start to notice things that even many experts miss. 
 
-What we've learned is that the easiest way to generate a realistic wealth distribution is to basically play out the random motion of cash in a population. In other words: the action of *entropy*. Furthermore, that entropic process never runs backwards, because, after all, entropy seldom does. These wealth distributions have undergone something that physicists call called *symmetry breaking*. 
+What we've learned is that the easiest way to generate a realistic wealth distribution is to play out the random motion of cash in a population. In other words: the action of *entropy*. Furthermore, that entropic process never runs backwards, because, after all, entropy seldom does. These wealth distributions have undergone something that physicists call called *symmetry breaking*. 
 
 When Thomas Piketty came out with his famous [book](https://www.economist.com/blogs/economist-explains/2014/05/economist-explains), there were economists lining up to pour scorn on his ideas. But the process of escalating inequality he observes in the data he collected is just like the symetry breaking we've modeled here. 
 
 For me, that raises two questions:
 
-One: If he's wrong, how come wealth ineqality doesn't behave like the action of entropy, why is the curve that it produces *exactly like it*? 
+One: If he's wrong, how come wealth ineqality doesn't behave like the action of entropy, why is the curve that it produces always *exactly like it*? 
 
 Two: Given what we see here, how can we possibly believe in the power of the free market to pick the right prices for things? 
 
-It seems pretty obvious here that in a free market, power is going to slide into the  hands of a few. At the creation of a market, when every trader has relatively equal power, the prices for things will reflect the needs of the many. But over time, the prices for things will inevitably start to reflect the desires of the few because only a few will have the spare resources required to set prices. Furthermore, adding talent or business acumen to that picture only accelerates this process. 
+It seems pretty obvious here that in a free market, power is going to eventually slide into the  hands of a few. At the creation of a market, when every trader has relatively equal power, the prices for things will reflect the needs of the many. But over time, the prices for things will inevitably start to reflect the desires of the few because only a few will have the spare resources required to set prices. Furthermore, adding talent or business acumen to that picture only accelerates this process, as we've seen.
 
 Thus, *believing in the power of unrestrained free markets to reflect fair prices indefinitely is equivalent to believing that entropy can go backwards.*
 
@@ -60,6 +60,6 @@ Because when truly disruptive events come along, like the Industrial Revolution 
 
 "So we need a revolution," says Karl. "A planned economy!"
 
-I don't think so. From what I've seen, top-down controlled economies tend to end up with inequality curves just like the ones we just looked at. If anything, they seem even steeper. The inexorable logic of inequality doesn't really care what's being traded, whether it's money or political favors in a single-party system. I suspect we need something else. 
+I don't think so. From what I've seen, top-down controlled economies tend to end up with inequality curves just like the ones we just looked at. If anything, they seem even steeper. The inexorable logic of inequality doesn't really care what's being traded, whether it's money or political favors in a single-party system. I suspect that we need something else. 
 
-I want to come back to this topic with models that more closely resemble actual markets because I'd like to know what *would* work. But in the mean time, the meta-point stands: we understand the world when we look past just the specifics in front of us, and start investigating the higher-level patterns. When we exercise our curiosity, we are stronger and wiser. And if you've read this far, you're already doing that. So I salute you, dear Reader. Thank you for going on this journey with me. Next time, I'll give the wealth models a rest, and post about something a little different.
+I want to come back to this topic with models that more closely resemble actual markets because I'd like to know what *would* work. But in the mean time, the meta-point stands: we understand the world when we look past just the specifics in front of us and start investigating the higher-level patterns. When we exercise our curiosity, we are stronger and wiser. And if you've read this far, you're already doing that. So I salute you, dear reader. Thank you for going on this journey with me. Next time, I'll give the wealth models a rest, and post about something a little different.
