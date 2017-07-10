@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 
 This time, I don't have any simulations to share. Instead, I'd like to reflect on the sims that have already appeared in this series and follow through on a promise I made last time: to reveal what I thought was the deeper truth that these economic models provide. 
