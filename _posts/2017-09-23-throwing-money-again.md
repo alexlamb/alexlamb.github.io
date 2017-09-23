@@ -1,8 +1,6 @@
 ---
 published: true
 ---
-## Throwing Money Again
-
 It's been a while since I last posted in this blog. In the last post, months ago, I promised you a new model, and here I am writing about throwing money again. What happened?
 
 Two things. First, I built that new model. It's about building teams, cooperation, and organizational effectiveness. And in the next few posts, I'm going to walk you through it. But also, I had some questions about the last posts in my Throwing Money series. People wanted to know what was going on, and why the results panned out the way they did. So I decided that one more post on the topic was in order to make things clear. After that, it's game theory time.
