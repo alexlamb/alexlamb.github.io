@@ -9,7 +9,7 @@ As you may recall, this series was about what building a very simple model of an
 
 "How does that work?" was the question I received. So I decided to make a fresh version of the sim to explain. In the sim below, I look at the overall talent and prior wealth of each tranche of twenty agents and plot the relative values over the distribution. That way, you can see the distributions of family advantage and talent over the distribution of wealth. I invite you to click on it to see what happens. 
 
-<canvas id="canvasWealthEntropyTop" width="500" height="200">
+<canvas id="canvasWealthEntropyOver" width="500" height="200">
  Your browser does not support the HTML 5 Canvas.
 </canvas>
 <script>
