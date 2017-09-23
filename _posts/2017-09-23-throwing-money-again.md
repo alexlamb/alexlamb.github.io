@@ -399,7 +399,6 @@ function simWealthEntropyOver() {
 simWealthEntropyOver();
 </script>
 
-
 As you'll see if you let the sim run for long enough, we end up with an upward curve for both prior wealth and talent across the population. However, those two curves are not the same shape. Talent forms a gentle wobbling slope. Prior wealth effects stay mostly level until you reach about the top twenty-five percent of the population, at which point they kick into a high gear. By the time you get to the top ten percent of society, they are dominating. 
 
 This doesn't happen all at once. For a while, as the simulation runs, talent is making more of a difference. It's only after the consequences of wealth inequality kick in that we see the effects reverse themselves. At that point, you're not dealing with the same kind of society that you started with.
