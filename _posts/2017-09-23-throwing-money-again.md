@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 ## Throwing Money Again
 
@@ -407,4 +407,4 @@ Is there a lesson here? Certainly. If you believe in an Ayn Rand style model of 
 
 Similarly, if you are a Marxist keen to maintain a fair and efficient society, it's worth noting that the bourgeoisie (upper middle class) is where you're most likely to see the highest ratio of talent to prior wealth. That suggests that these are the people driving change – the economic engine of your society. You demonize them at your peril. 
 
-If there's one thing I love about models, it's the way that they explode our assumptions about how the world works with so little investment of effort. Personally, I'd like everyone running for political office to have to complete a course on complex systems before they can stand. Who's with me?  
+If there's one thing I love about models, it's the way that they explode our assumptions about how the world works with so little investment of effort. Personally, I'd like everyone running for political office to have to complete a course on complex systems before they can stand. Who's with me?
