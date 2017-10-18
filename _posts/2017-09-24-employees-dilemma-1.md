@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 Here are three very LinkedIn questions for you:
 - _What’s the secret to rapidly building truly effective teams?_
@@ -34,6 +34,4 @@ Then I added my twist: a fourth symbol borrowed from my first trial game. Matchi
 
 This time, when I played the game, the results were even more interesting. Participants started watching each others' choices closely. They started trying to bend the rules by finding reliable prior partners to interact with. They started retaliating against defectors. In short, they started _caring_, even though this game was no less disposable than my first version had been. By adding in the extra challenge around coordination, I had stumbled across a variant that far more intuitively tapped into the human social experience of cooperating successfully with others. I knew I had the right game to take to ASTD and win the room. 
 
-The next step, however, was to take this new game back to the computer models to see if I could understand why it felt so different to people, and to discover whether I could reproduce the effects 'in silico'. And that was when things started to get fascinating. In the next post, I'll show you one of those simulations, and explain what I found. 
-
-
+The next step, however, was to take this new game back to the computer models to see if I could understand why it felt so different to people, and to discover whether I could reproduce the effects 'in silico'. And that was when things started to get fascinating. In the next post, I'll show you one of those simulations, and explain what I found.
