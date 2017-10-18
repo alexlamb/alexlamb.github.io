@@ -1,7 +1,7 @@
 ---
 published: false
 custom_js:
-- empdilTuckman.js
+  - empdilTuckman.js
 ---
 Welcome back readers! In the last post, I started explaining the background for the simple game that I've come to think of as 'Employee's Dilemma'. This time, I'm going to show you the sim in action and explain why the results got me so excited. But first, I'm guessing a bunch of you are wondering: 'why _employee's_ dilemma?' Is he saying that employees are like prisoners?
 
