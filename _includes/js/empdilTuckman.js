@@ -8,9 +8,12 @@ function simEmpDilemma2() {
     const bigHeight = height * scaleFactor;
     const groupCount = 1; //Must match number of defined groups
     //Wrapper setup----------------
+    
+    var container = document.getElementById('TuckmanSim');
     const canvas0 = document.createElement("canvas");
     canvas0.setAttribute("id", "canvasIDEmpDilemma2.0");
-    document.body.appendChild(canvas0);
+    container.appendChild(canvas0);
+    
     canvas0.width = bigWidth;
     canvas0.height = bigHeight;
     canvas0.style.width = "" + width + "px";
