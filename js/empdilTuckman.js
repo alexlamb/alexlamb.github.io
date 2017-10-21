@@ -10,7 +10,7 @@ function simEmpDilemma2() {
     //Wrapper setup----------------
     
     var container = document.getElementById('TuckmanSim');
-    console.log("got container:"+container.id;
+    console.log("got container:"+container.id);
     const canvas0 = document.createElement("canvas");
     canvas0.setAttribute("id", "canvasIDEmpDilemma2.0");
     container.appendChild(canvas0);
