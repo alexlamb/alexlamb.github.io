@@ -1,20 +1,17 @@
-function simEmpDilemma2() {
+function simEmpDilemma() {
     //SIM WRAPPER CONFIG =====================
     //Wrapper constants----------------
     const scaleFactor = 2; //To compensate for retina screens
     const width = 400;
-    const height = 520;
+    const height = 400;
     const bigWidth = width * scaleFactor;
     const bigHeight = height * scaleFactor;
     const groupCount = 1; //Must match number of defined groups
     //Wrapper setup----------------
-    
-    var container = document.getElementById('TuckmanSim');
-    console.log("got container:"+container.id);
+    const container = document.getElementById('TuckmanSim');
     const canvas0 = document.createElement("canvas");
-    canvas0.setAttribute("id", "canvasIDEmpDilemma2.0");
+    canvas0.setAttribute("id", "canvasIDEmpDilTuckman.0");
     container.appendChild(canvas0);
-    
     canvas0.width = bigWidth;
     canvas0.height = bigHeight;
     canvas0.style.width = "" + width + "px";
@@ -27,8 +24,8 @@ function simEmpDilemma2() {
     for (let i = 0; i < groupCount; i++) {
         let plotCanvas = document.createElement("canvas");
         let canvasIndex = i + 1;
-        plotCanvas.setAttribute("id", "canvasIDEmpDilemma2." + canvasIndex);
-        document.body.appendChild(plotCanvas);
+        plotCanvas.setAttribute("id", "canvasIDEmpDilTuckman." + canvasIndex);
+        container.appendChild(plotCanvas);
         plotCanvas.width = bigWidth;
         plotCanvas.height = bigHeight;
         plotCanvas.style.width = "" + (width) + "px";
@@ -675,4 +672,4 @@ function simEmpDilemma2() {
     init();
     //=====================
 }
-simEmpDilemma2();
+simEmpDilemma();
