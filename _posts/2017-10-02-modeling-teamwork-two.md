@@ -1,7 +1,7 @@
 ---
 published: true
 custom_js:
-- js/empdilTuckman.js
+  - js/empdilTuckman.js
 ---
 Welcome back readers! In the last post, I started explaining the background for the simple game that I've come to think of as 'Employee's Dilemma'. This time, I'm going to show you the sim in action and explain why the results got me so excited. But first, I'm guessing a bunch of you are wondering: 'why _employee's_ dilemma?' Is he saying that employees are like prisoners?
 
@@ -19,7 +19,7 @@ In the following panels, I've built a little army of software robots represented
 
 I've also included a timeline that will show you how much the behaviors are preferred in the population as time passes. That extra yellow line you see measures the level of happiness in the population. How much do people actually like the team they're in? A high score is good, a low one means everyone is miserable. Click on the sim once to start, again to stop, and a third time to reset. 
 
-<div id="TuckmanSim">WHY DOES THIS NOT WORK?</div>
+<div id="TuckmanSim" style="margin: 0px auto;"></div>
 
 Lo and behold, with these two simple additional rules, something wonderful happens. My agents go from being black-hearted defectors to something a little like a human team. At first, the agents have no idea what to do. Their behaviors are all over the place. Defection slowly starts to dominate. After a while, that pattern of habitual retaliation settles in as a norm. Nobody is being particularly nice to each other. They're all scoring points. But meanwhile, in the background, among those glimmers of niceness that remain, one particular choice of action starts to win out over the others. And when that becomes clear, suddenly everyone starts to get on board with it. A single, shared approach suddenly spreads across the team like wildfire. After that, things get lovely. A team has been born. Agents are now cooperating with each other all over the place because they know how.(I've marked these transitions with different colors to make sure they're easy to see.)  
 
