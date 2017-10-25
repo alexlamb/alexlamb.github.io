@@ -3,9 +3,9 @@ published: false
 custom_js:
   - js/empdilTuckman.js
 ---
-Welcome back readers! In the last post, I started explaining the background for the simple game that I've come to think of as 'Employee's Dilemma'. This time, I'm going to show you the sim in action and explain why the results got me so excited. But first, I'm guessing a bunch of you are wondering: 'why _employee's_ dilemma?' Is he saying that employees are like prisoners?
+Welcome back readers! In the last post, I started explaining the background for the simple game that I've come to think of as 'Employee's Dilemma'. This time, I'm going to show you the sim in action and explain why the results got me so excited. But first, I'm guessing a bunch of you are wondering: 'why _employee's_ dilemma?' Is he saying that employees are like prisoners? In fact, no. Let me explain.
 
-In fact, no. While the parallel amuses me, the reason why I picked this name is because real, positive coordination in the workplace almost always requires more effort than simply making the choice to do what's asked. Great companies are made when the people that comprise them put in effort to make their company better than it was when they joined. I wanted to capture the sense that real, meaningful coordination, particularly around work, involves making choices that are often difficult, subtle, and requiring of at least a glimmer of personal agency.
+While the parallel amuses me, the reason why I picked this name is because real, positive coordination in the workplace almost always requires more effort than simply making the choice to do what's asked. Great companies are made when the people that comprise them put in effort to make their company better than it was when they joined. I wanted to capture the sense that real, meaningful coordination, particularly around work, involves making choices that are often difficult, subtle, and requiring of at least a glimmer of personal agency.
 
 And here's the point that makes that clear: put the 'employee's dilemma' into a simple iterative simulation and defection immediately and comprenehsively wins. All attempts to coordinate in the simplest possible version of the model are doomed. 
 
