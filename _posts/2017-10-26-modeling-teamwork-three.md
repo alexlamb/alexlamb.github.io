@@ -17,7 +17,9 @@ So why do people organize differently? Honey bees have been around a lot longer 
 
 First, human beings engage in dynamic, socially heterogeneous task-assignment. People take on specific jobs and carry them out to fulfill the requirements of shared projects. Even when people have specialized deeply on skills like say, software development, what one person is writing on a dev team can be wildly different from what the person next to him is working on. Furthermore, the nature of those tasks may vary from week to week. The fact that humans are, in essence 'programmable' with complex tasks means that simple, distributed social models like those the honey bees use are unlikely to work for us.
 
-Secondly, we are apes. And because of that, we consistently conflate leadership with sexual dominance. 
+Secondly, we are apes. And because of that, we consistently conflate leadership with sexual dominance. We can't help it. We evolved from species in which domainant males maintained sexual control over multiple females through physical force, just like lions or elk, or countless other kinds of mammals you can think of. That means that the process through which we pick someone to call the shots organizationally is likely to always be at least slightly muddied with who's calling the shots reproductively. Can we get past that as a species? I'd like to think so, even though the tide of biology is against us. 
+
+But my point is not to get caught up in the weeds of leadership and gender. It's to point out that people in leadership roles _inevitably_ end up having differently percieved social status. 
 
 
 
