@@ -9,7 +9,7 @@ In order to explain what I learned about leadership from this model, we should p
 
 _A leader is someone who fulfills a coordination role in a social group and who is interacted with differently in order to help facilitate that purpose._
 
-Note that we've said nothing about power, talent, or personality in that description. And there's a reason for that. Human beings tend to see leadership through a certain kind of lens. The role of group coordinator is usually coupled with certain implications about that person's personal attributes and societal value. But leadership in the rest of the animal kingdom seldom works the way it does for us. 
+Note that we've said nothing about power, talent, or personality in that description. And there's a reason for that. Human beings tend to see leadership through a certain lens. The role of group coordinator is usually coupled with certain implications about that person's personal attributes and societal value. But leadership in the rest of the animal kingdom seldom works the way it does for us. 
 
 Consider bees. Who would you say 'leads' a hive of honey bees? Is it the queen? She's not making any decisions. She doesn't coordinate anything. She is responsible only for the production of offspring, and by some genetic measures is more like the birthing-slave of the hive than the leader. Yet still the hive makes decisions, for instance about where to forage or what constitutes an ideal new hive site. In his marvelous book, [Honeybee Democracy](https://www.amazon.com/Honeybee-Democracy-Thomas-D-Seeley/dp/0691147213), Thomas Seeley points out that if there _are_ leaders in a hive, they are the scouts. They are the ones who fly out, gather information about food sources and nest sites, and then bring it back to the others. The bees then make use of a collective decision-making process to figure out which scouts to listen to. What differentiates scouts from other workers? Pretty much just age and experience. They do the same jobs as other workers. Eat the same honey. And no one of them is "in charge".
 
@@ -35,4 +35,7 @@ That's it. All other elements of the sim remain the same. But as you'll see, the
 
 
 
-As you can see
+As you can see, the leaders in our dysfunctional company never get past defecting, but something like an organizational culture forms anyway, even though it takes far longer to happen than it did with our simple team last time. Why do the leaders always defect? Because it's the easiest thing for them to do. Not being called to account for their actions means that there's no cost to bad behavior. And at the same time, there's a disincentive to try anything else because they can't remember positives. Note from the yellow happiness line for leaders that they're doing fine. They see no problem with this arrangement. And everyone else has found a way to get along, anyway. Once a company is stuck in this pattern, you won't see much interest from management about changing it. 
+
+
+
