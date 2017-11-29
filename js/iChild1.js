@@ -41,16 +41,6 @@ var page = 0;
 var leftChevron;
 var rightChevron;
 
-/* TODO
-In swapping to a caroussel, the entire dynamics of this page are going to change.
-I can't have the buttons drawn once and minimally updated.
-The approach is going to have to be more like the one in Child2.
-I'm going to need an updateUI function after a fashion.
-Hopefully, all that will need to happen is the moving of the options
-and the repainting of the slider overlay.
-*/
-
-
 function initUI(data) {
     buttonData = data;
     state = new Array(data.length);
@@ -126,38 +116,46 @@ function initUI(data) {
     rightChevron.fill('none').stroke({width:3, color:'Gray'});
     rightChevron.dmove(width-(optionOffset+5),0);
 
-    updateChevrons();
+    // updateChevrons();
 }
 
 function pageLeft() {
     if (page > 0) {
         page--;
-        buttons.dmove(itemWidth*itemsPerPage,0);
-        updateChevrons();
+        buttons.animate(250).dmove(itemWidth*itemsPerPage,0);
+        // updateChevrons();
+    } else {
+        page = pages - 1;
+        buttons.animate(250).dmove(-itemWidth*itemsPerPage*(pages-1),0);
     }
+    console.log("page:"+page+" shift:"+buttons.x());
 }
 
 function pageRight() {
     if (page < pages-1) {
         page++;
-        buttons.dmove(-itemWidth*itemsPerPage,0);
-        updateChevrons();
+        buttons.animate(250).dmove(-itemWidth*itemsPerPage,0);
+        // updateChevrons();
+    } else {
+        page = 0;
+        buttons.animate(250).dmove(itemWidth*itemsPerPage*(pages-1),0);
     }
+    console.log("page:"+page+" shift:"+buttons.x());
 }
 
-function updateChevrons() {
-    console.log("page:"+page+" pages:"+pages);
-    if (page == 0) {
-        leftChevron.stroke('none');
-    } else {
-        leftChevron.stroke('Gray');
-    }
-    if (page == pages - 1) {
-        rightChevron.stroke('none');
-    } else {
-        rightChevron.stroke('Gray');
-    }
-}
+// function updateChevrons() {
+//     console.log("page:"+page+" pages:"+pages);
+//     if (page == 0) {
+//         leftChevron.stroke('none');
+//     } else {
+//         leftChevron.stroke('Gray');
+//     }
+//     if (page == pages - 1) {
+//         rightChevron.stroke('none');
+//     } else {
+//         rightChevron.stroke('Gray');
+//     }
+// }
 
 function toggleFrozen() {
     console.log("toggleFrozen");

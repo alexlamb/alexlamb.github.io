@@ -25,17 +25,11 @@ const dotGap = 20;
 const diameter = 16;
 const textRight = 160;
 const dotRight = 260;
-const dotTop = 20;
+const dotTop = 28;
 const textTop = 60;
 const iconSide = 60;
 const borderLeft = 150;
 const borderExtra = 120;
-
-const levelInc = 16;
-const bottleBottom = (units*levelInc) + 140;
-const bottleLeft = 20;
-const bottleWidth = 100;
-const bottleRight = bottleLeft + bottleWidth;
 
 const rimWidth = 5;
 const rimHeight = 5;
@@ -116,19 +110,26 @@ function updateUI() {
             text.fill('Black');
 
             for (let j = 0; j < units; j++) {
-                // rect = controls.rect(rowHeight, rowHeight);
-                rect = controls.circle(diameter);
-                rect.move(dotRight+j*dotGap,dotTop + yPos*rowHeight);
-                rect.stroke({color: 'Black', width: 2})
+
+                let rect;
+                if (j == state[i] - 1) {
+                    // rect = controls.rect(rowHeight, rowHeight);
+                    rect = controls.circle(dotGap-2);
+                    // rect.stroke({color: 'Black', width: 2})
+                    rect.move(1+ dotGap/2 + dotRight+j*dotGap,dotTop + yPos*rowHeight - 3);
+                } else {
+                    rect = controls.rect(dotGap,diameter-4);
+                    rect.move(dotGap/2 + dotRight+j*dotGap,dotTop + yPos*rowHeight);
+                }
 
                 if (j < state[i]) {
                     rect.fill(optionData[i].color);
                     rect.click(function() {updateState(i,j+1)});
                 } else if (j < state[i]+capacity){
-                    rect.fill('White');
+                    rect.fill('LightGray');
                     rect.click(function() {updateState(i,j+1)});
                 } else {
-                    rect.fill('LightGray');
+                    rect.fill('DimGray');
                 }
             }
 
@@ -147,6 +148,8 @@ function updateUI() {
             const delTDown = 51;
             const delWidth = 60;
             const delHeight = 20;
+            const partsTLeft = (units*dotGap) + 204;
+            const partsTDown = 4;
 
             // let delRect = controls.rect(delWidth, delHeight);
             // delRect.fill('Gray');
@@ -159,20 +162,43 @@ function updateUI() {
 
             delText.click(function() {updateState(i,0)});
 
+            let partString = " part";
+            if (state[i]>1) partString += "s";
+            let partsText = controls.text(state[i]+partString);
+            partsText.fill('DimGray');
+            partsText.font({'size':16});
+            partsText.move(partsTLeft,(yPos*rowHeight)+partsTDown);
+
             yPos++;
         }
-
     }
+
+    const levelInc = 15;
+    const bottleBottom = (units*levelInc) + 140;
+    const bottleLeft = 10;
+    const bottleWidth = 130;
+    const bottleRight = bottleLeft + bottleWidth;
+
     var level = 0;
     var element = yPos-1;
-    // for (let i = 0; i < state.length; i++) {
+    // for (let i = 0; i < state.lengh; i++) {
     for (let i = state.length-1; i >= 0; i--) {
 
         if (state[i] > 0) {
             let rectHeight = state[i]*levelInc;
+            let rectTop = bottleBottom-(rectHeight+level);
+
             rect = controls.rect(bottleWidth,rectHeight);
             rect.fill(optionData[i].color);
-            rect.move(bottleLeft,bottleBottom-(rectHeight+level));
+            rect.move(bottleLeft,rectTop);
+            
+            let imSide = Math.min(40, rectHeight);
+            let imLeft = bottleLeft + (bottleWidth-imSide)/2;
+            let imTop = rectTop + (rectHeight - imSide)/2;
+            let im = controls.image(assets+optionData[i].image,imSide,imSide);
+            im.move(imLeft, imTop);
+
+
 
             // let lineLeft = bottleBottom-(rectHeight+level) + rectHeight/2;
             // let lineRight = element*rowHeight + rowHeight/2;
@@ -184,35 +210,39 @@ function updateUI() {
         }
     }
 
-    let bottleMid = bottleLeft + (bottleWidth/2);
+    let bottle = controls.image(assets+"blank-bottle.png",400,400);
+    bottle.move(-125,0);
 
-    let rimLeft = bottleMid - (rimWidth + (neckWidth/2));
-    let neckLeft = bottleMid - (neckWidth/2);
-    let rimRight = bottleMid + (rimWidth + (neckWidth/2));
-    let neckRight = bottleMid + (neckWidth/2);
 
-    let straightTop = bottleBottom-(units*levelInc);
-    let shoulderTop = straightTop - shoulderHeight;
-    let shoulderMid = straightTop - (shoulderHeight/2);
-    let neckTop = shoulderTop - neckHeight;
-    let rimTop = neckTop - rimHeight;
-
-    let pathString = "";
-    pathString += "M "+rimLeft+" "+rimTop+" ";
-    pathString += "Q "+neckLeft+" "+rimTop+" "+neckLeft+" "+neckTop+" ";
-    pathString += "L "+neckLeft+" "+shoulderTop+" ";
-    pathString += "C "+neckLeft+" "+shoulderMid+" "+bottleLeft+" "+shoulderMid+" "+bottleLeft+" "+straightTop+" ";
-    pathString += "L "+bottleLeft+" "+bottleBottom+" ";
-    pathString += "L "+bottleRight+" "+bottleBottom+" ";
-    pathString += "L "+bottleRight+" "+straightTop+" ";
-    pathString += "C "+bottleRight+" "+shoulderMid+" "+neckRight+" "+shoulderMid+" "+neckRight+" "+shoulderTop+" ";
-    pathString += "L "+neckRight+" "+neckTop+" ";
-    pathString += "Q "+neckRight+" "+rimTop+" "+rimRight+" "+rimTop+" ";
-    controls.path(pathString).fill('none').stroke({width:3, color:"Black"});
-
-    controls.circle(10).move(rimLeft,rimTop - 20).fill('none').stroke({width:3, color:"Black"});
-    controls.circle(15).move(neckRight-5,rimTop - 35).fill('none').stroke({width:3, color:"Black"});
-    controls.circle(20).move(rimLeft,rimTop - 60).fill('none').stroke({width:3, color:"Black"});
+    // let bottleMid = bottleLeft + (bottleWidth/2);
+    //
+    // let rimLeft = bottleMid - (rimWidth + (neckWidth/2));
+    // let neckLeft = bottleMid - (neckWidth/2);
+    // let rimRight = bottleMid + (rimWidth + (neckWidth/2));
+    // let neckRight = bottleMid + (neckWidth/2);
+    //
+    // let straightTop = bottleBottom-(units*levelInc);
+    // let shoulderTop = straightTop - shoulderHeight;
+    // let shoulderMid = straightTop - (shoulderHeight/2);
+    // let neckTop = shoulderTop - neckHeight;
+    // let rimTop = neckTop - rimHeight;
+    //
+    // let pathString = "";
+    // pathString += "M "+rimLeft+" "+rimTop+" ";
+    // pathString += "Q "+neckLeft+" "+rimTop+" "+neckLeft+" "+neckTop+" ";
+    // pathString += "L "+neckLeft+" "+shoulderTop+" ";
+    // pathString += "C "+neckLeft+" "+shoulderMid+" "+bottleLeft+" "+shoulderMid+" "+bottleLeft+" "+straightTop+" ";
+    // pathString += "L "+bottleLeft+" "+bottleBottom+" ";
+    // pathString += "L "+bottleRight+" "+bottleBottom+" ";
+    // pathString += "L "+bottleRight+" "+straightTop+" ";
+    // pathString += "C "+bottleRight+" "+shoulderMid+" "+neckRight+" "+shoulderMid+" "+neckRight+" "+shoulderTop+" ";
+    // pathString += "L "+neckRight+" "+neckTop+" ";
+    // pathString += "Q "+neckRight+" "+rimTop+" "+rimRight+" "+rimTop+" ";
+    // controls.path(pathString).fill('none').stroke({width:3, color:"Black"});
+    //
+    // controls.circle(10).move(rimLeft,rimTop - 20).fill('none').stroke({width:3, color:"Black"});
+    // controls.circle(15).move(neckRight-5,rimTop - 35).fill('none').stroke({width:3, color:"Black"});
+    // controls.circle(20).move(rimLeft,rimTop - 60).fill('none').stroke({width:3, color:"Black"});
 
     if (capacity == units) {
         const mixD = 40;
