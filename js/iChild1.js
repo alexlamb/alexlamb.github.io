@@ -30,6 +30,7 @@ const itemWidth = 100;
 
 var optionButtons = [];
 var optionBorders = [];
+var optionRects = [];
 var buttons;
 var state;
 var buttonData;
@@ -63,20 +64,23 @@ function initUI(data) {
 
     for (let i = 0; i < data.length; i++) {
         var item = data[i];
-        console.log(data[i].name);
 
-        // let optionRect = buttons.rect(borderSide,borderSide).fill(data[i].color).opacity(0.2);
-        // optionRect.move(borderRim+(i*width/data.length),borderRim);
+        let optionRect = buttons.rect(borderSide,borderSide).fill('none').opacity(0.2);
+        optionRect.move(borderRim+(optionOffset+i*itemWidth),borderRim);
+        optionRects.push(optionRect);
 
         let optionButton = buttons.image(assets+data[i].image,buttonSide,buttonSide);
         optionButtons.push(optionButton);
         optionButton.move(buttonRim+(optionOffset+i*itemWidth),buttonRim);
 
+        optionButton.style('cursor', 'pointer');
         optionButton.click(function() {selectOption(i)});
+        optionButton.mouseover(function() {highlightOption(i)});
+        optionButton.mouseout(function() {fadeOption(i)});
 
         let optionBorder = buttons.rect(borderSide,borderSide);
         optionBorders.push(optionBorder);
-        optionBorder.fill('none').stroke({color: 'none', width: 2});
+        optionBorder.fill('none').stroke({color: 'Silver', width: 2});
         optionBorder.move(borderRim+(optionOffset+i*itemWidth),borderRim);
         optionBorder.radius(5);
 
@@ -119,6 +123,19 @@ function initUI(data) {
     // updateChevrons();
 }
 
+function highlightOption(i) {
+    console.log("highlight:"+i);
+    if (!frozen) {
+        optionRects[i].animate(5).fill(buttonData[i].color);
+    }
+}
+
+function fadeOption(i) {
+    if (!frozen) {
+        optionRects[i].animate(5).fill('none');
+    }
+}
+
 function pageLeft() {
     if (page > 0) {
         page--;
@@ -126,7 +143,8 @@ function pageLeft() {
         // updateChevrons();
     } else {
         page = pages - 1;
-        buttons.animate(250).dmove(-itemWidth*itemsPerPage*(pages-1),0);
+        buttons.dmove(-itemWidth*itemsPerPage*pages,0);
+        buttons.animate(250).dmove(itemWidth*itemsPerPage,0);
     }
     console.log("page:"+page+" shift:"+buttons.x());
 }
@@ -138,7 +156,8 @@ function pageRight() {
         // updateChevrons();
     } else {
         page = 0;
-        buttons.animate(250).dmove(itemWidth*itemsPerPage*(pages-1),0);
+        buttons.dmove(itemWidth*itemsPerPage*pages,0);
+        buttons.animate(250).dmove(-itemWidth*itemsPerPage,0);
     }
     console.log("page:"+page+" shift:"+buttons.x());
 }
@@ -163,9 +182,11 @@ function toggleFrozen() {
     for (let i = 0; i < state.length; i++) {
         if (state[i] == 0) {
             if (frozen) {
-                optionBorders[i].stroke('Gray');
+                // optionBorders[i].stroke('DimGray');
+                optionRects[i].fill('DimGray');
             } else {
-                optionBorders[i].stroke('none');
+                // optionBorders[i].stroke('Silver');
+                optionRects[i].fill('none');
             }
         }
     }
@@ -182,7 +203,7 @@ function selectOption(i) {
         sendMessage = true;
 
     } else if (state[i] > 0) {
-        optionBorders[i].stroke('none');
+        optionBorders[i].stroke('Silver');
         console.log("Unfreezing");
         state[i] = 0;
         frozen = false;
