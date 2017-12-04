@@ -195,6 +195,7 @@ function updateUI() {
                     rect.move(dotLeft+j*dotGap,dotTop + yPos*rowHeight);
                 }
 
+                let highlightOn = true;
                 if (j < state[i]) {
                     rect.fill(optionData[i].color);
                     rect.click(function() {updateState(i,j+1)});
@@ -204,7 +205,19 @@ function updateUI() {
                     rect.click(function() {updateState(i,j+1)});
                     rect.style('cursor', 'pointer');
                 } else {
+                    highlightOn = false;
                     rect.fill('DimGray');
+                }
+
+                if (highlightOn) {
+                    let highlight = controls.circle(4);
+                    highlight.move(dotLeft+(j+0.5)*dotGap-2,dotTop+yPos*rowHeight+sliderHeight/2-2);
+                    // highlight.fill(optionData[i].color);
+                    highlight.fill('none');
+                    rect.mouseover(function() {highlight.animate(5).fill('White')});
+                    // rect.mouseout(function() {highlight.animate(5).fill(optionData[i].color)});
+                    rect.mouseout(function() {highlight.animate(5).fill('none')});
+                    highlight.click(function() {updateState(i,j+1)});
                 }
             }
 
@@ -241,6 +254,9 @@ function updateUI() {
 
             delText.click(function() {updateState(i,0)});
             delText.style('cursor', 'pointer');
+            delText.mouseover(function() {delText.animate(5).fill('Black')});
+            delText.mouseout(function() {delText.animate(5).fill('Gray')});
+
 
             let partString = " part";
             if (state[i]>1) partString += "s";
