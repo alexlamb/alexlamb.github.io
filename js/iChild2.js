@@ -1,10 +1,10 @@
 window.onload = function() {
-    console.log("Started up");
+    // console.log("Started up");
   window.onmessage = (event) => {
-    console.log("message received from parent");
+    console.log("C2 message received from parent");
     if (event.data) {
-      console.log(JSON.stringify(event));
-      console.log(JSON.stringify(event.data));
+      // console.log(JSON.stringify(event));
+      // console.log(JSON.stringify(event.data));
 
       if (event.data.action === "Init") {
           initUI(event.data.content);
@@ -18,6 +18,8 @@ window.onload = function() {
 const assets = "assets/"
 const arrowsFile = "arrows.png";
 const units = 10;
+const maxFlavors = 5;
+const initialAdd = 2;
 
 var optionData;
 var width;
@@ -27,7 +29,7 @@ var buttons;
 var controls;
 var capacity;
 var helpText;
-
+var selected;
 
 function initUI(data) {
     optionData = data;
@@ -40,6 +42,7 @@ function initUI(data) {
     draw = SVG('svgCanvas').size(width, height);
     controls = draw.group();
     capacity = units;
+    selected = 0;
 
     helpText = draw.text("Select flavors from the options above to make your mix");
     updateUI();
@@ -48,28 +51,141 @@ function initUI(data) {
 function updateSelection(selectionData) {
     console.log("C2 updateSelection");
 
+    //Determine how many flavors are now selected
+    let nowSelected = 0;
+    let priorSelected = 0;
+    let maxSelected = 0;
     for (let i = 0; i < selectionData.length; i++) {
-        // console.log("i:"+i+" selection:"+selectionData[i]+" state:"+state[i]);
-
-        if (selectionData[i] > 0 && state[i] == 0) {
-            state[i] = 2;
-        } else if (selectionData[i] == 0 && state[i] > 0) {
-            state[i] = 0;
-        }
+        if (selectionData[i] > 0) nowSelected++;
+        if (state[i] > 0) priorSelected++;
+        if (state[i] > maxSelected) maxSelected = state[i];
     }
-    updateUI();
 
     let action = "UpdateRecipe";
-    if (capacity == 0) {
+
+    if (nowSelected == 0) {
+        //Just clear everything out
+        console.log("Clearing bottle");
+        for (let i = 0; i < selectionData.length; i++) {
+            state[i] = 0;
+        }
+    } else if (nowSelected == 1 && priorSelected < 1) {
+        //There's only one flavor and it's new
+        console.log("One new flavor");
+        for (let i = 0; i < selectionData.length; i++) {
+            if (selectionData[i] > 0) {
+                state[i] = units;
+            } else {
+                state[i] = 0;
+            }
+        }
+    } else if (nowSelected == 1 && priorSelected >= 1) {
+        //There's only one flavor but we used to have more
+        console.log("Down to one flavor");
+        for (let i = 0; i < selectionData.length; i++) {
+            if (selectionData[i] == 0) {
+                state[i] = 0;
+            }
+        }
+
+    } else if (nowSelected == 2) {
+        if (capacity < initialAdd && priorSelected < 2) {
+            //Our recipe is already maxed and we're adding. So we balance.
+            console.log("Two full flavors. Balancing.");
+            for (let i = 0; i < selectionData.length; i++) {
+                if (selectionData[i] > 0 && state[i] > units/2) {
+                    state[i] -= units/2;
+                } else if (selectionData[i] > 0 && state[i] == 0) {
+                    state[i] = units/2;
+                }
+            }
+
+        } else if (capacity >= initialAdd && priorSelected < 2) {
+            //Our recipe not too full and we're adding.
+            console.log("Empty 2-recipe. Adding.");
+            for (let i = 0; i < selectionData.length; i++) {
+                if (selectionData[i] > 0 && state[i] == 0) {
+                    state[i] = capacity;
+                }
+            }
+        } else  {
+            //General case
+            console.log("General 2-case");
+            if (selectionData[i] > 0 && state[i] == 0) {
+                state[i] = 2;
+            } else if (selectionData[i] == 0 && state[i] > 0) {
+                state[i] = 0;
+            }
+        }
+
+    } else if (selected <= maxFlavors) {
+
+        if (capacity < initialAdd && priorSelected < nowSelected) {
+            //Flavors are increasing but we have limited capacity.
+            //We have to move some ingredients around.
+
+            if (maxSelected <= initialAdd) {
+                //Flavors are really spread out so we have to balance.
+                console.log("Full n-recipe. Balancing.");
+                let subtracted = 0;
+                for (let i = 0; i < selectionData.length; i++) {
+                    if (selectionData[i] > 0 && state[i] == 0) {
+                        //New item. We add something.
+                        state[i] = initialAdd;
+                    } else if (selectionData[i] > 0 && state[i] > 1 && subtracted < initialAdd) {
+                        //Existing item. We still have stuff we need to take out. We subtract.
+                        state[i]--;
+                        subtracted++;
+                    }
+                }
+
+            } else {
+                //There's a clear dominant so we don't have to balance.
+                console.log("Full n-recipe with dominant. Shifting.");
+                let maxAltered = false;
+                for (let i = 0; i < selectionData.length; i++) {
+                    if (selectionData[i] > 0 && state[i] == 0) {
+                        //New item. We add something.
+                        state[i] = initialAdd;
+                    } else if (selectionData[i] > 0 && state[i]  == maxSelected && !maxAltered) {
+                        //Existing item. We still have stuff we need to take out. We subtract.
+                        state[i] -= initialAdd;
+                        maxAltered = true;
+                    }
+                }
+            }
+
+        } else {
+            //General case
+            console.log("General n-recipe.");
+            for (let i = 0; i < selectionData.length; i++) {
+                if (selectionData[i] > 0 && state[i] == 0) {
+                    state[i] = 2;
+                } else if (selectionData[i] == 0 && state[i] > 0) {
+                    state[i] = 0;
+                }
+            }
+        }
+
+        if (nowSelected == maxFlavors) {
+            action = "FreezeOptions";
+        }
+    } else if (nowSelected > maxFlavors) {
         action = "FreezeOptions";
+        console.log("Too many flavors active! How did this happen?")
     }
+
+    updateUI();
+
+    // if (capacity == 0) {
+    //     action = "FreezeOptions";
+    // }
 
     var message = {
         action: action,
         selection: state
     };
     window.parent.postMessage(message,"*");
-
 }
 
 function updateUI() {
@@ -327,12 +443,22 @@ function updateUI() {
 function updateState(i, j) {
     console.log("updateState i:"+i+" j:"+j);
     state[i] = j;
+
+    let nowSelected = 0;
+    for (let i = 0; i < state.length; i++) {
+        if (state[i] > 0) nowSelected++;
+    }
+
     updateUI();
 
     let action = "UpdateRecipe";
-    if (capacity == 0) {
+    // if (capacity == 0) {
+    //     action = "FreezeOptions";
+    // } else
+    if (nowSelected >= maxFlavors) {
         action = "FreezeOptions";
-    } else if (j == 0) {
+    } else
+    if (j == 0) {
         action = "RemoveIngredient";
     }
 

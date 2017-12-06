@@ -1,18 +1,18 @@
 window.onload = function() {
   window.onmessage = (event) => {
-    console.log("message received from parent");
+    console.log("C1 message received from parent");
     if (event.data) {
-      console.log(JSON.stringify(event));
-      console.log(JSON.stringify(event.data));
+      // console.log(JSON.stringify(event));
+      // console.log(JSON.stringify(event.data));
 
       if (event.data.action === "Init") {
           initUI(event.data.content);
       } else if (event.data.action === "Freeze") {
-          frozen = true;
-          toggleFrozen();
+          console.log("C1 Freeze request");
+          setFrozen(true);
       } else if (event.data.action === "Unfreeze") {
-          frozen = false;
-          toggleFrozen();
+          console.log("C1 Unfreeze request");
+          setFrozen(false);
       } else if (event.data.action === "Remove") {
           removeIngredient(event.data.content);
       }
@@ -38,6 +38,7 @@ var frozen = false;
 var shift = 0;
 var pages = 1;
 var page = 0;
+// var selected = 0;
 
 var leftChevron;
 var rightChevron;
@@ -48,7 +49,7 @@ function initUI(data) {
     state.fill(0);
 
     pages = Math.floor((data.length * itemWidth) / optionsWidth);
-    console.log("pages:"+pages);
+    console.log("C1 pages:"+pages);
 
     frozen = false;
 
@@ -124,7 +125,7 @@ function initUI(data) {
 }
 
 function highlightOption(i) {
-    console.log("highlight:"+i);
+    console.log("C1 highlight:"+i);
     if (!frozen) {
         optionRects[i].animate(5).fill(buttonData[i].color);
     }
@@ -146,7 +147,7 @@ function pageLeft() {
         buttons.dmove(-itemWidth*itemsPerPage*pages,0);
         buttons.animate(250).dmove(itemWidth*itemsPerPage,0);
     }
-    console.log("page:"+page+" shift:"+buttons.x());
+    console.log("C1 page:"+page+" shift:"+buttons.x());
 }
 
 function pageRight() {
@@ -159,7 +160,7 @@ function pageRight() {
         buttons.dmove(itemWidth*itemsPerPage*pages,0);
         buttons.animate(250).dmove(-itemWidth*itemsPerPage,0);
     }
-    console.log("page:"+page+" shift:"+buttons.x());
+    console.log("C1 page:"+page+" shift:"+buttons.x());
 }
 
 // function updateChevrons() {
@@ -176,8 +177,9 @@ function pageRight() {
 //     }
 // }
 
-function toggleFrozen() {
-    console.log("toggleFrozen");
+function setFrozen(value) {
+    console.log("C1 setFrozen");
+    frozen = value;
 
     for (let i = 0; i < state.length; i++) {
         if (state[i] == 0) {
@@ -196,19 +198,25 @@ function selectOption(i) {
 
     let sendMessage = false;
 
-    console.log("selectOption:"+i);
+    console.log("C1 selectOption:"+i);
+    // if (state[i] == 0 && !frozen && selected < 5) {
     if (state[i] == 0 && !frozen) {
         optionBorders[i].stroke(buttonData[i].color);
         state[i] = 1;
         sendMessage = true;
+        // selected++;
+        // if (selected >= 5) {
+        //     setFrozen(true);
+        // }
 
+    // } else if (state[i] > 0 && selected < 5) {
     } else if (state[i] > 0) {
         optionBorders[i].stroke('Silver');
-        console.log("Unfreezing");
+        console.log("C1 Unfreezing");
         state[i] = 0;
-        frozen = false;
-        toggleFrozen();
+        setFrozen(false);
         sendMessage = true;
+        // selected--;
     }
 
     if (sendMessage) {
@@ -218,6 +226,7 @@ function selectOption(i) {
         };
         window.parent.postMessage(message,"*");
     }
+    // console.log("Selected:"+selected);
 }
 
 function removeIngredient(data) {
@@ -225,10 +234,9 @@ function removeIngredient(data) {
         if (data[i] == 0 && state[i] > 0) {
 
             optionBorders[i].stroke('none');
-            console.log("Unfreezing");
+            console.log("C1 Unfreezing");
             state[i] = 0;
-            frozen = false;
-            toggleFrozen();
+            setFrozen(false);
         }
     }
 }
