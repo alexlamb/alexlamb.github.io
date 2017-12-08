@@ -27,7 +27,7 @@ var data = [
     {
         name:"Cinnamon",
         color:"Saddlebrown",
-        image:"cinn.webp"
+        image:"cinn.png"
     },
     {
         name:"Coconut",
@@ -77,7 +77,27 @@ var data = [
     {
         name:"Siracha",
         color:"Darkred",
-        image:"sirach.webp"
+        image:"sirach.png"
+    },
+    {
+        name:"Apple",
+        color:"Darkred",
+        image:"apple.png"
+    },
+    {
+        name:"Blueberry",
+        color:"Darkred",
+        image:"blueb.png"
+    },
+    {
+        name:"Caramel",
+        color:"Darkred",
+        image:"caramel.png"
+    },
+    {
+        name:"Popcorn",
+        color:"Darkred",
+        image:"popcorn.png"
     },
 ];
 var child1 = document.getElementById("child1").contentWindow;

@@ -16,8 +16,8 @@ window.onload = function() {
 }
 
 const assets = "assets/"
-const arrowsFile = "arrows.png";
-const units = 10;
+// const arrowsFile = "arrows.png";
+const units = 12;
 const maxFlavors = 5;
 const initialAdd = 2;
 
@@ -36,7 +36,7 @@ function initUI(data) {
     state = new Array(data.length);
     state.fill(0);
 
-    width = 700;
+    width = 1000;
     height = 1100;
 
     draw = SVG('svgCanvas').size(width, height);
@@ -44,7 +44,9 @@ function initUI(data) {
     capacity = units;
     selected = 0;
 
-    helpText = draw.text("Select flavors from the options above to make your mix");
+    helpText = draw.text("");
+    helpText.font({family:'Helvetica', size:25});
+    helpText.move(200,0);
     updateUI();
 }
 
@@ -55,10 +57,13 @@ function updateSelection(selectionData) {
     let nowSelected = 0;
     let priorSelected = 0;
     let maxSelected = 0;
+    let minSelected = units;
+
     for (let i = 0; i < selectionData.length; i++) {
         if (selectionData[i] > 0) nowSelected++;
         if (state[i] > 0) priorSelected++;
         if (state[i] > maxSelected) maxSelected = state[i];
+        if (state[i] > 0 && state[i] < minSelected) minSelected = state[i];
     }
 
     let action = "UpdateRecipe";
@@ -69,9 +74,9 @@ function updateSelection(selectionData) {
         for (let i = 0; i < selectionData.length; i++) {
             state[i] = 0;
         }
-    } else if (nowSelected == 1 && priorSelected < 1) {
+    } else if (nowSelected == 1) {
         //There's only one flavor and it's new
-        console.log("One new flavor");
+        console.log("One flavor");
         for (let i = 0; i < selectionData.length; i++) {
             if (selectionData[i] > 0) {
                 state[i] = units;
@@ -79,93 +84,169 @@ function updateSelection(selectionData) {
                 state[i] = 0;
             }
         }
-    } else if (nowSelected == 1 && priorSelected >= 1) {
-        //There's only one flavor but we used to have more
-        console.log("Down to one flavor");
-        for (let i = 0; i < selectionData.length; i++) {
-            if (selectionData[i] == 0) {
-                state[i] = 0;
-            }
-        }
+    // } else if (nowSelected == 1 && priorSelected >= 1) {
+    //     //There's only one flavor but we used to have more
+    //     console.log("Down to one flavor");
+    //     for (let i = 0; i < selectionData.length; i++) {
+    //         if (selectionData[i] == 0) {
+    //             state[i] = 0;
+    //         }
+    //     }
 
-    } else if (nowSelected == 2) {
-        if (capacity < initialAdd && priorSelected < 2) {
-            //Our recipe is already maxed and we're adding. So we balance.
-            console.log("Two full flavors. Balancing.");
+    // } else if (nowSelected == 2) {
+    //     if (capacity < initialAdd && priorSelected < 2) {
+    //         //Our recipe is already maxed and we're adding. So we balance.
+    //         console.log("Two full flavors. Balancing.");
+    //         for (let i = 0; i < selectionData.length; i++) {
+    //             if (selectionData[i] > 0 && state[i] > units/2) {
+    //                 state[i] -= units/2;
+    //             } else if (selectionData[i] > 0 && state[i] == 0) {
+    //                 state[i] = units/2;
+    //             }
+    //         }
+    //
+    //     } else if (capacity >= initialAdd && priorSelected < 2) {
+    //         //Our recipe not too full and we're adding.
+    //         console.log("Empty 2-recipe. Adding.");
+    //         for (let i = 0; i < selectionData.length; i++) {
+    //             if (selectionData[i] > 0 && state[i] == 0) {
+    //                 state[i] = capacity;
+    //             }
+    //         }
+    //     } else  {
+    //         //General case
+    //         console.log("General 2-case");
+    //         if (selectionData[i] > 0 && state[i] == 0) {
+    //             state[i] = initialAdd;
+    //         } else if (selectionData[i] == 0 && state[i] > 0) {
+    //             state[i] = 0;
+    //         }
+    //     }
+    //
+    } else if (nowSelected <= maxFlavors) {
+
+        let frac = units / nowSelected;
+        let fair = Math.floor(frac);
+        let even = false;
+        if (frac == fair) even = true;
+
+        console.log("min:"+minSelected+" max:"+maxSelected+" frac:"+frac+"fair:"+fair+" even:"+even);
+
+        if (capacity == 0 && minSelected == maxSelected && even) {
+            //We have our ideal case
+            console.log("ideal case");
             for (let i = 0; i < selectionData.length; i++) {
-                if (selectionData[i] > 0 && state[i] > units/2) {
-                    state[i] -= units/2;
-                } else if (selectionData[i] > 0 && state[i] == 0) {
-                    state[i] = units/2;
-                }
-            }
-
-        } else if (capacity >= initialAdd && priorSelected < 2) {
-            //Our recipe not too full and we're adding.
-            console.log("Empty 2-recipe. Adding.");
-            for (let i = 0; i < selectionData.length; i++) {
-                if (selectionData[i] > 0 && state[i] == 0) {
-                    state[i] = capacity;
-                }
-            }
-        } else  {
-            //General case
-            console.log("General 2-case");
-            if (selectionData[i] > 0 && state[i] == 0) {
-                state[i] = 2;
-            } else if (selectionData[i] == 0 && state[i] > 0) {
-                state[i] = 0;
-            }
-        }
-
-    } else if (selected <= maxFlavors) {
-
-        if (capacity < initialAdd && priorSelected < nowSelected) {
-            //Flavors are increasing but we have limited capacity.
-            //We have to move some ingredients around.
-
-            if (maxSelected <= initialAdd) {
-                //Flavors are really spread out so we have to balance.
-                console.log("Full n-recipe. Balancing.");
-                let subtracted = 0;
-                for (let i = 0; i < selectionData.length; i++) {
-                    if (selectionData[i] > 0 && state[i] == 0) {
-                        //New item. We add something.
-                        state[i] = initialAdd;
-                    } else if (selectionData[i] > 0 && state[i] > 1 && subtracted < initialAdd) {
-                        //Existing item. We still have stuff we need to take out. We subtract.
-                        state[i]--;
-                        subtracted++;
-                    }
-                }
-
-            } else {
-                //There's a clear dominant so we don't have to balance.
-                console.log("Full n-recipe with dominant. Shifting.");
-                let maxAltered = false;
-                for (let i = 0; i < selectionData.length; i++) {
-                    if (selectionData[i] > 0 && state[i] == 0) {
-                        //New item. We add something.
-                        state[i] = initialAdd;
-                    } else if (selectionData[i] > 0 && state[i]  == maxSelected && !maxAltered) {
-                        //Existing item. We still have stuff we need to take out. We subtract.
-                        state[i] -= initialAdd;
-                        maxAltered = true;
-                    }
-                }
-            }
-
-        } else {
-            //General case
-            console.log("General n-recipe.");
-            for (let i = 0; i < selectionData.length; i++) {
-                if (selectionData[i] > 0 && state[i] == 0) {
-                    state[i] = 2;
+                if (selectionData[i] > 0) {
+                    state[i] = fair;
                 } else if (selectionData[i] == 0 && state[i] > 0) {
                     state[i] = 0;
                 }
             }
         }
+
+        else if (capacity == 0 && minSelected == maxSelected && !even) {
+            //We have a full even bottle but are going to end up with asymmetry
+            let newAmount = priorSelected;
+
+            console.log("full with asymmetry");
+            for (let i = 0; i < selectionData.length; i++) {
+                if (selectionData[i] > 0 && state[i] == 0) {
+                    state[i] = newAmount;
+                } else if (selectionData[i] > 0 && state[i] > 0) {
+                    state[i]--;
+                } else if (selectionData[i] == 0 && state[i] > 0) {
+                    state[i] = 0;
+                }
+            }
+        }
+
+        else if (capacity == 0 && nowSelected > priorSelected) {
+            //We remove from flavors until we have covered the initial add
+            console.log("removing to initial add");
+            removed = 0;
+            for (let i = 0; i < selectionData.length; i++) {
+                if (selectionData[i] > 0 && state[i] == 0) {
+                    state[i] = initialAdd;
+                } else if (selectionData[i] > 0 && state[i] > 1 && removed < initialAdd) {
+                    state[i]--;
+                    removed++;
+                } else if (selectionData[i] == 0 && state[i] > 0) {
+                    state[i] = 0;
+                }
+            }
+        }
+
+        else if (capacity >= minSelected) {
+            //We can assign the new flavor the minimum current
+            console.log("assigning minimum current");
+            for (let i = 0; i < selectionData.length; i++) {
+                if (selectionData[i] > 0 && state[i] == 0) {
+                    state[i] = minSelected;
+                } else if (selectionData[i] == 0 && state[i] > 0) {
+                    state[i] = 0;
+                }
+            }
+        }
+
+        else  {
+            //We assign remaining capacity to the new flavor
+            console.log("assigning remaining capacity");
+            let newAmount = capacity;
+
+            for (let i = 0; i < selectionData.length; i++) {
+                if (selectionData[i] > 0 && state[i] == 0) {
+                    state[i] = capacity;
+                } else if (selectionData[i] == 0 && state[i] > 0) {
+                    state[i] = 0;
+                }
+            }
+        }
+
+        // if (capacity < initialAdd && priorSelected < nowSelected) {
+        //     //Flavors are increasing but we have limited capacity.
+        //     //We have to move some ingredients around.
+        //
+        //     if (maxSelected <= initialAdd) {
+        //         //Flavors are really spread out so we have to balance.
+        //         console.log("Full n-recipe. Balancing.");
+        //         let subtracted = 0;
+        //         for (let i = 0; i < selectionData.length; i++) {
+        //             if (selectionData[i] > 0 && state[i] == 0) {
+        //                 //New item. We add something.
+        //                 state[i] = initialAdd;
+        //             } else if (selectionData[i] > 0 && state[i] > 1 && subtracted < initialAdd) {
+        //                 //Existing item. We still have stuff we need to take out. We subtract.
+        //                 state[i]--;
+        //                 subtracted++;
+        //             }
+        //         }
+        //
+        //     } else {
+        //         //There's a clear dominant so we don't have to balance.
+        //         console.log("Full n-recipe with dominant. Shifting.");
+        //         let maxAltered = false;
+        //         for (let i = 0; i < selectionData.length; i++) {
+        //             if (selectionData[i] > 0 && state[i] == 0) {
+        //                 //New item. We add something.
+        //                 state[i] = initialAdd;
+        //             } else if (selectionData[i] > 0 && state[i]  == maxSelected && !maxAltered) {
+        //                 //Existing item. We still have stuff we need to take out. We subtract.
+        //                 state[i] -= initialAdd;
+        //                 maxAltered = true;
+        //             }
+        //         }
+        //     }
+
+        // } else {
+        //     //General case
+        //     console.log("General n-recipe.");
+        //     for (let i = 0; i < selectionData.length; i++) {
+        //         if (selectionData[i] > 0 && state[i] == 0) {
+        //             state[i] = 2;
+        //         } else if (selectionData[i] == 0 && state[i] > 0) {
+        //             state[i] = 0;
+        //         }
+        //     }
 
         if (nowSelected == maxFlavors) {
             action = "FreezeOptions";
@@ -186,29 +267,10 @@ function updateSelection(selectionData) {
         selection: state
     };
     window.parent.postMessage(message,"*");
+    selected = nowSelected;
 }
 
 function updateUI() {
-
-    const rowTop = 40;
-    const textWidth = 100;
-    const rowHeight = 80;
-    const dotGap = 30;
-    const diameter = 20;
-    const sliderHeight = 14;
-    const textLeft = 0;
-    const dotLeft = 80;
-    const dotTop = 28;
-    const textTop = 60;
-    const iconSide = 60;
-    const borderLeft = 0;
-    const borderExtra = 80;
-
-    // const rimWidth = 5;
-    // const rimHeight = 5;
-    // const neckWidth = 20;
-    // const neckHeight = 30;
-    // const shoulderHeight = 30;
 
     controls.remove();
     controls = draw.group();
@@ -220,21 +282,35 @@ function updateUI() {
 
     let messge = 0;
     if (capacity > 0) {
-        message = "You have "+capacity+" parts left to play with."
+        helpText.text("You have ");
+        helpText.build(true);
+        helpText.tspan(""+capacity).fill('Green');
+        if (capacity ==1 ) {
+            helpText.tspan(" part left to add");
+        } else {
+            helpText.tspan(" parts left to add");
+        }
+        helpText.build(false);
+
+        // message = "You have "+capacity+" parts left to add"
     } else {
-        message = "Your bottle is full. You're ready to go!"
+        message = "Reduce flavors to change the balance"
+        helpText.text(message);
     }
-    helpText.text(message);
 
     const bottleSide = 600;
-    const bottleImLeft = 300;
+    const bottleImLeft = 580;
     const bottleImTop = -45;
-    const levelInc = 30;
-    const bottleBottom = (units*levelInc) + 140;
-    const bottleRectLeft = 470;
-    const bottleWidth = 160;
-    const iconMax = 120;
+    const levelInc = 32;
+    const bottleBottom = (units*levelInc) + 98;
+    const bottleRectLeft = 766;
+    const bottleWidth = 178;
+    const iconMax = 160;
     // const bottleRight = bottleRectLeft + bottleWidth;
+
+    bottleBack = controls.rect(450,550);
+    bottleBack.fill('#F7F7F7');
+    bottleBack.move(bottleImLeft+100,bottleImTop);
 
     var level = 0;
     var element = yPos-1;
@@ -245,8 +321,8 @@ function updateUI() {
             let rectHeight = state[i]*levelInc;
             let rectTop = bottleBottom-(rectHeight+level);
 
-            rect = controls.rect(bottleWidth,rectHeight);
-            rect.fill(optionData[i].color);
+            rect = controls.rect(bottleWidth,rectHeight-2);
+            rect.fill('#ECF2F9');
             rect.move(bottleRectLeft,rectTop);
 
             level += rectHeight;
@@ -254,7 +330,7 @@ function updateUI() {
         }
     }
 
-    let bottle = controls.image(assets+"blank-bottle.png",500,500);
+    let bottle = controls.image(assets+"border-bottle.png",550,550);
     bottle.move(bottleImLeft,bottleImTop);
 
     var level = 0;
@@ -274,20 +350,42 @@ function updateUI() {
             let labelText = controls.text(optionData[i].name);
             let length = labelText.length();
             let adjust = (imSide - length)/2;
-            labelText.fill("White");
-            labelText.move(imLeft+adjust,imTop+(imSide/2)-10);
+            labelText.font({family:'Helvetica',size:20})
+            labelText.fill("Gray");
+            labelText.move(imLeft+adjust+1,1+imTop+(imSide/2)-10);
+
+            let labelText2 = controls.text(optionData[i].name);
+            labelText2.font({family:'Helvetica',size:20})
+            labelText2.fill("White");
+            labelText2.move(imLeft+adjust,imTop+(imSide/2)-10);
 
             level += rectHeight;
             element--;
         }
     }
 
+    const rowTop = 60;
+    const rowHeight = 100;
+    const textWidth = 100;
+    const textTop = 36;
+    const textLeft = 170;
+    const iconTop = 0;
+    const iconLeft = 80;
+    const iconSide = 80;
+    const dotGap = 30;
+    const diameter = 24;
+    const sliderHeight = 14;
+    const dotLeft = 280;
+    const dotTop = 40;
+    const borderLeft = 100;
+    const borderExtra = 180;
+
     var yPos = 0;
     for (let i = 0; i < state.length; i++) {
         if (state[i] > 0) {
 
             let icon = controls.image(assets+optionData[i].image,iconSide,iconSide);
-            icon.move(textLeft,yPos*rowHeight);
+            icon.move(iconLeft,yPos*rowHeight);
 
             let text = controls.text(optionData[i].name).move(textLeft, textTop + yPos*rowHeight);
             text.fill('Black');
@@ -295,29 +393,32 @@ function updateUI() {
             for (let j = 0; j < units; j++) {
 
                 let rect;
-                if (j == state[i] - 1) {
-                    // rect = controls.rect(rowHeight, rowHeight);
-                    rect = controls.circle(diameter);
-                    // rect.stroke({color: 'Black', width: 2})
+                // if (j == state[i] - 1) {
 
-                    let rectLeft = dotLeft+j*dotGap;
-                    let rectTop = dotTop + yPos*rowHeight;
-                    let dotXAdjust = (dotGap - diameter)/2;
-                    let dotYAdjust = -(diameter - sliderHeight)/2;
+                // rect = controls.rect(rowHeight, rowHeight);
+                rect = controls.circle(diameter);
+                // rect.stroke({color: 'Black', width: 2})
 
-                    rect.move(rectLeft + dotXAdjust,rectTop + dotYAdjust);
-                } else {
-                    rect = controls.rect(dotGap,sliderHeight);
-                    rect.move(dotLeft+j*dotGap,dotTop + yPos*rowHeight);
-                }
+                let rectLeft = dotLeft+j*dotGap;
+                let rectTop = dotTop + yPos*rowHeight;
+                let dotXAdjust = (dotGap - diameter)/2;
+                let dotYAdjust = -(diameter - sliderHeight)/2;
+
+                rect.move(rectLeft + dotXAdjust,rectTop + dotYAdjust);
+
+                // } else {
+                //     rect = controls.rect(dotGap,sliderHeight);
+                //     rect.move(dotLeft+j*dotGap,dotTop + yPos*rowHeight);
+                // }
 
                 let highlightOn = true;
                 if (j < state[i]) {
-                    rect.fill(optionData[i].color);
+                    rect.fill('#52009A');
                     rect.click(function() {updateState(i,j+1)});
                     rect.style('cursor', 'pointer');
                 } else if (j < state[i]+capacity){
-                    rect.fill('LightGray');
+                    rect.fill('White');
+                    rect.stroke({color:'Silver',width:1});
                     rect.click(function() {updateState(i,j+1)});
                     rect.style('cursor', 'pointer');
                 } else {
@@ -330,39 +431,27 @@ function updateUI() {
                     highlight.move(dotLeft+(j+0.5)*dotGap-2,dotTop+yPos*rowHeight+sliderHeight/2-2);
                     // highlight.fill(optionData[i].color);
                     highlight.fill('none');
-                    rect.mouseover(function() {highlight.animate(5).fill('White')});
+                    rect.mouseover(function() {highlight.animate(5).fill('Silver')});
                     // rect.mouseout(function() {highlight.animate(5).fill(optionData[i].color)});
                     rect.mouseout(function() {highlight.animate(5).fill('none')});
                     highlight.click(function() {updateState(i,j+1)});
                 }
             }
 
-            // let border = controls.rect((units*dotGap) + borderExtra, rowHeight);
-            // border.fill('none');
-            // border.stroke('Gray');
-            // border.radius(5);
-            // border.move(borderLeft,yPos*rowHeight+1);
+            const partsTDown = 5;
+            let separatorRight = borderLeft + (units*dotGap) + borderExtra;
 
-            let separator = controls.line(
-                borderLeft,
-                (yPos+1)*rowHeight,
-                borderLeft + (units*dotGap) + borderExtra,
-                (yPos+1)*rowHeight);
-            separator.stroke({color:'Silver', width:1});
+            let partString = "/"+units+" Parts";
+            // if (state[i]>1) partString += "s";
+            let partsText = controls.text(state[i]+partString);
+            partsText.fill('#333333');
+            partsText.font({'size':20});
+            let partsTLeft = separatorRight - (partsText.length()+4);
+            partsText.move(partsTLeft,(yPos*rowHeight)+partsTDown);
 
-            const delRLeft = (units*dotGap) + 24;
-            const delTLeft = (units*dotGap) + 30;
-            const delRDown = 50;
-            const delTDown = 51;
-            const delWidth = 60;
-            const delHeight = 20;
-            const partsTLeft = (units*dotGap) + 28;
-            const partsTDown = 4;
+            const delTLeft = (units*dotGap) + 220;
+            const delTDown = 70;
 
-            // let delRect = controls.rect(delWidth, delHeight);
-            // delRect.fill('Gray');
-            // delRect.radius(5);
-            // delRect.move(delRLeft,(yPos*rowHeight)+delRDown);
             let delText = controls.text("Remove");
             delText.fill('Gray');
             delText.font({'size':14});
@@ -373,70 +462,39 @@ function updateUI() {
             delText.mouseover(function() {delText.animate(5).fill('Black')});
             delText.mouseout(function() {delText.animate(5).fill('Gray')});
 
-
-            let partString = " part";
-            if (state[i]>1) partString += "s";
-            let partsText = controls.text(state[i]+partString);
-            partsText.fill('DimGray');
-            partsText.font({'size':16});
-            partsText.move(partsTLeft,(yPos*rowHeight)+partsTDown);
+            let separator = controls.line(
+                borderLeft,
+                (yPos+1)*rowHeight,
+                separatorRight,
+                (yPos+1)*rowHeight);
+            separator.stroke({color:'Silver', width:1});
 
             yPos++;
         }
     }
 
+    if (capacity == units) {
 
+        helpText.text("");
 
-    // let bottleMid = bottleLeft + (bottleWidth/2);
-    //
-    // let rimLeft = bottleMid - (rimWidth + (neckWidth/2));
-    // let neckLeft = bottleMid - (neckWidth/2);
-    // let rimRight = bottleMid + (rimWidth + (neckWidth/2));
-    // let neckRight = bottleMid + (neckWidth/2);
-    //
-    // let straightTop = bottleBottom-(units*levelInc);
-    // let shoulderTop = straightTop - shoulderHeight;
-    // let shoulderMid = straightTop - (shoulderHeight/2);
-    // let neckTop = shoulderTop - neckHeight;
-    // let rimTop = neckTop - rimHeight;
-    //
-    // let pathString = "";
-    // pathString += "M "+rimLeft+" "+rimTop+" ";
-    // pathString += "Q "+neckLeft+" "+rimTop+" "+neckLeft+" "+neckTop+" ";
-    // pathString += "L "+neckLeft+" "+shoulderTop+" ";
-    // pathString += "C "+neckLeft+" "+shoulderMid+" "+bottleLeft+" "+shoulderMid+" "+bottleLeft+" "+straightTop+" ";
-    // pathString += "L "+bottleLeft+" "+bottleBottom+" ";
-    // pathString += "L "+bottleRight+" "+bottleBottom+" ";
-    // pathString += "L "+bottleRight+" "+straightTop+" ";
-    // pathString += "C "+bottleRight+" "+shoulderMid+" "+neckRight+" "+shoulderMid+" "+neckRight+" "+shoulderTop+" ";
-    // pathString += "L "+neckRight+" "+neckTop+" ";
-    // pathString += "Q "+neckRight+" "+rimTop+" "+rimRight+" "+rimTop+" ";
-    // controls.path(pathString).fill('none').stroke({width:3, color:"Black"});
-    //
-    // controls.circle(10).move(rimLeft,rimTop - 20).fill('none').stroke({width:3, color:"Black"});
-    // controls.circle(15).move(neckRight-5,rimTop - 35).fill('none').stroke({width:3, color:"Black"});
-    // controls.circle(20).move(rimLeft,rimTop - 60).fill('none').stroke({width:3, color:"Black"});
+        let startText1 = controls.text("");
+        startText1.font({family:'Helvetica',size:20});
+        startText1.build(true);
+        startText1.tspan("Get started").fill('#52009A').font({weight:'bold'});
+        startText1.tspan(" by selecting some flavorings");
+        startText1.build(false);
+        startText1.move(120,140);
 
-    // if (capacity == units) {
-    //     const mixD = 40;
-    //     const mixTX = 300;
-    //     const mixTY = 100;
-    //     const mixCX = mixTX+80;
-    //     const mixCY = mixTY-12;
-    //     const mixT2X = mixTX+85;
-    //     const arrowSide = 60;
-    //     const arrowsX = mixTX+28;
-    //     const arrowsY = mixTY+32;
-    //
-    //     let makeText = controls.text("Make your");
-    //     makeText.move(mixTX, mixTY);
-    //     let mixC = controls.circle(mixD).move(mixCX,mixCY);
-    //     let mixText = controls.text("MIX").fill("White");
-    //     mixText.move(mixT2X, mixTY);
-    //
-    //     let arrows = controls.image(assets+arrowsFile,arrowSide, arrowSide);
-    //     arrows.move(arrowsX, arrowsY);
-    // }
+        let startText2 = controls.text("for your vodka above...")
+        startText2.font({family:'Helvetica',size:20});
+        startText2.move(200,170);
+
+        let startIcon = controls.image(assets+"/mix.png",100,100);
+        startIcon.move(240,200);
+
+        let arrowIcon = controls.image(assets+"/arrow.png",160,160);
+        arrowIcon.move(360,-30);
+    }
     controls.move(0,rowTop);
 }
 
