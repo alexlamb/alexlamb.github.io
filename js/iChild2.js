@@ -322,7 +322,8 @@ function updateUI() {
             let rectTop = bottleBottom-(rectHeight+level);
 
             rect = controls.rect(bottleWidth,rectHeight-2);
-            rect.fill('#ECF2F9');
+            // rect.fill('#ECF2F9');
+            rect.fill('#DCE2F9');
             rect.move(bottleRectLeft,rectTop);
 
             level += rectHeight;

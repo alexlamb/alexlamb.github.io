@@ -148,13 +148,15 @@ function initUI(data) {
 
 function highlightOption(i) {
     console.log("C1 highlight:"+i);
-    if (!frozen) {
+    if (!frozen || state[i] > 0) {
         optionShades[i].animate(5).fill('White');
     }
 }
 
 function fadeOption(i) {
-    if (!frozen) {
+    console.log("C1 fade:"+i+" frozen:"+frozen+" state:"+state[i]+" func:"+(!frozen || state[i] > 1));
+    if (!frozen || state[i] > 0) {
+        console.log("C1 fading");
         optionShades[i].animate(5).fill('none');
     }
 }
