@@ -37,7 +37,12 @@ function initUI(data) {
     state.fill(0);
 
     width = 1000;
-    height = 1100;
+    height = 800;
+
+    var svgNode = document.getElementById("svgCanvas");
+    while (svgNode.firstChild) {
+        svgNode.removeChild(svgNode.firstChild);
+    }
 
     draw = SVG('svgCanvas').size(width, height);
     controls = draw.group();

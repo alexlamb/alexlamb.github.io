@@ -21,6 +21,7 @@ window.onload = function() {
 }
 
 const assets = "assets/"
+// const assets = "assets/"
 const leftChev = "chevron-left.png";
 const rightChev = "chevron-right.png";
 const width = 1000;
@@ -65,6 +66,11 @@ function initUI(data) {
     var borderSideH = itemHeight * 5 / 6;
     var borderRimW = (itemWidth - borderSideW) / 2;
     var borderRimH = (itemHeight - borderSideH) / 2;
+
+    var svgNode = document.getElementById("svgCanvas");
+    while (svgNode.firstChild) {
+        svgNode.removeChild(svgNode.firstChild);
+    }
 
     draw = SVG('svgCanvas').size(width, height);
     draw.rect(width, height).fill("#F0F0F0");
