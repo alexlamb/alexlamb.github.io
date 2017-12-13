@@ -1,4 +1,8 @@
 window.onload = function() {
+  
+  var divEl = document.getElementById('testdiv');
+  divEl.innerHTML = "Onload happened";
+  
   window.onmessage = (event) => {
     console.log("C1 message received from parent");
     if (event.data) {
