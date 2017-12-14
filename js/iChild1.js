@@ -2,11 +2,11 @@ var divEl = document.getElementById('testdiv');
 divEl.innerHTML = "Onload not required";
 divEl.style.color = 'red';
 
-window.onmessage = (event) => {
-  divEl = document.getElementById('testdiv');
-  divEl.innerHTML = "messages arriving";
-  divEl.style.color = 'green';
-};
+// window.onmessage = (event) => {
+//   divEl = document.getElementById('testdiv');
+//   divEl.innerHTML = "messages arriving";
+//   divEl.style.color = 'green';
+// };
 
 window.onload = function() {
   
@@ -15,6 +15,10 @@ window.onload = function() {
   divEl.style.color = 'blue';
   
   window.onmessage = (event) => {
+    divEl = document.getElementById('testdiv');
+    divEl.innerHTML = "messages arriving";
+    divEl.style.color = 'green';
+
     console.log("C1 message received from parent");
     if (event.data) {
       // console.log(JSON.stringify(event));
