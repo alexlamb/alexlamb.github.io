@@ -35,7 +35,7 @@ window.onload = function() {
   }
 }
 
-const assets = "http://alexlamb.github.io/js/assets/"
+const assets = "https://alexlamb.github.io/js/assets/"
 // const assets = "assets/"
 const leftChev = "chevron-left.png";
 const rightChev = "chevron-right.png";
