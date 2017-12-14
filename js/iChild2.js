@@ -1,17 +1,11 @@
 window.onload = function() {
-    // console.log("Started up");
-  window.onmessage = (event) => {
-    console.log("C2 message received from parent");
-    if (event.data) {
-      // console.log(JSON.stringify(event));
-      // console.log(JSON.stringify(event.data));
+    initUI();
+}
 
-      if (event.data.action === "Init") {
-          initUI(event.data.content);
-      } else {
-          updateSelection(event.data.content);
-      }
-    }
+window.onmessage = (event) => {
+  console.log("C2 message received from parent");
+  if (event.data) {
+    updateSelection(event.data.content);
   }
 }
 
@@ -31,9 +25,9 @@ var capacity;
 var helpText;
 var selected;
 
-function initUI(data) {
-    optionData = data;
-    state = new Array(data.length);
+function initUI() {
+    optionData = flavorData;
+    state = new Array(flavorData.length);
     state.fill(0);
 
     width = 1000;

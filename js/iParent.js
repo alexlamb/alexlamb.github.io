@@ -1,105 +1,4 @@
-/* TODO
-What do I want to have happen in here?
 
-Each child is initialized with the data.
-Each child sends messages to the parent when events occur.
-Each child tags its identity in messages that it sends.
-The parent forwards messages to those children where the event did not originate.
-
-*/
-
-var data = [
-    {
-        name:"Bacon",
-        color:"Firebrick",
-        image:"bacon.png"
-    },
-    {
-        name:"Blackberry",
-        color:"Indigo",
-        image:"black.png"
-    },
-    {
-        name:"Chocolate",
-        color:"#663501",
-        image:"choc.png"
-    },
-    {
-        name:"Cinnamon",
-        color:"Saddlebrown",
-        image:"cinn.png"
-    },
-    {
-        name:"Coconut",
-        color:"Peru",
-        image:"cocon.png"
-    },
-    {
-        name:"Coffee",
-        color:"#926A2B",
-        image:"coffee.png"
-    },
-    {
-        name:"Garlic",
-        color:"Lightsalmon",
-        image:"garl.png"
-    },
-    {
-        name:"Honey",
-        color:"Gold",
-        image:"honey.png"
-    },
-    {
-        name:"Jalapeno",
-        color:"Green",
-        image:"jala.png"
-    },
-    {
-        name:"Lime",
-        color:"Lime",
-        image:"lime.png"
-    },
-    {
-        name:"Mandarin",
-        color:"Orange",
-        image:"mand.png"
-    },
-    {
-        name:"Mint",
-        color:"GreenYellow",
-        image:"mint.png"
-    },
-    {
-        name:"Pomegranate",
-        color:"Crimson",
-        image:"pom.png"
-    },
-    {
-        name:"Siracha",
-        color:"Darkred",
-        image:"sirach.png"
-    },
-    {
-        name:"Apple",
-        color:"Darkred",
-        image:"apple.png"
-    },
-    {
-        name:"Blueberry",
-        color:"Darkred",
-        image:"blueb.png"
-    },
-    {
-        name:"Caramel",
-        color:"Darkred",
-        image:"caramel.png"
-    },
-    {
-        name:"Popcorn",
-        color:"Darkred",
-        image:"popcorn.png"
-    },
-];
 var child1 = document.getElementById("child1").contentWindow;
 var child2 = document.getElementById("child2").contentWindow;
 
@@ -139,13 +38,6 @@ window.onload = function() {
             }
         }
     }
-
-    var initMessage = {
-        action:"Init",
-        content:data
-    }
-    child1.postMessage(initMessage,"*");
-    child2.postMessage(initMessage,"*");
 }
 
 function sendMessage(child, action, data) {

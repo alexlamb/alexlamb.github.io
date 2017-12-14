@@ -1,46 +1,29 @@
-// var divEl = document.getElementById('testdiv');
-// divEl.innerHTML = "Onload not required";
-// divEl.style.color = 'red';
-
-window.onmessage = (event) => {
-  let divEl = document.getElementById('testdiv');
-  divEl.innerHTML = "messages arriving without onload";
-  divEl.style.color = 'green';
-};
+//TODO: This now needs a refurb to get it right
 
 window.onload = function() {
-  
-//   var divEl = document.getElementById('testdiv');
-//   divEl.innerHTML = "Onload happened";
-//   divEl.style.color = 'blue';
-  
-//   window.onmessage = (event) => {
-//     divEl = document.getElementById('testdiv');
-//     divEl.innerHTML = "messages arriving";
-//     divEl.style.color = 'green';
-//   }
-
-//     console.log("C1 message received from parent");
-//     if (event.data) {
-//       // console.log(JSON.stringify(event));
-//       // console.log(JSON.stringify(event.data));
-// 
-//       if (event.data.action === "Init") {
-//           initUI(event.data.content);
-//       } else if (event.data.action === "Freeze") {
-//           console.log("C1 Freeze request");
-//           setFrozen(true);
-//       } else if (event.data.action === "Unfreeze") {
-//           console.log("C1 Unfreeze request");
-//           setFrozen(false);
-//       } else if (event.data.action === "Remove") {
-//           removeIngredient(event.data.content);
-//       }
-//     }
-//   }
+    initUI();
 }
 
-const assets = "https://alexlamb.github.io/js/assets/"
+window.onmessage = (event) => {
+  console.log("C1 message received from parent");
+  if (event.data) {
+
+    // if (event.data.action === "Init") {
+    //     initUI(event.data.content);
+    // } else
+    if (event.data.action === "Freeze") {
+        console.log("C1 Freeze request");
+        setFrozen(true);
+    } else if (event.data.action === "Unfreeze") {
+        console.log("C1 Unfreeze request");
+        setFrozen(false);
+    } else if (event.data.action === "Remove") {
+        removeIngredient(event.data.content);
+    }
+  }
+}
+
+const assets = "assets/"
 // const assets = "assets/"
 const leftChev = "chevron-left.png";
 const rightChev = "chevron-right.png";
@@ -68,12 +51,12 @@ var page = 0;
 var leftChevron;
 var rightChevron;
 
-function initUI(data) {
-    buttonData = data;
-    state = new Array(data.length);
+function initUI() {
+    buttonData = flavorData;
+    state = new Array(flavorData.length);
     state.fill(0);
 
-    pages = Math.floor((data.length * itemWidth) / optionsWidth);
+    pages = Math.floor((flavorData.length * itemWidth) / optionsWidth);
     console.log("C1 pages:"+pages);
 
     frozen = false;
@@ -97,8 +80,8 @@ function initUI(data) {
     buttons = draw.group();
     edges = draw.group();
 
-    for (let i = 0; i < data.length; i++) {
-        var item = data[i];
+    for (let i = 0; i < flavorData.length; i++) {
+        var item = flavorData[i];
 
         let optionRect = buttons.rect(borderSideW,borderSideH).fill('none');
         optionRect.move(borderRimW+(optionOffset+i*itemWidth),borderRimH);
@@ -110,7 +93,7 @@ function initUI(data) {
         optionShade.radius(15);
         optionShades.push(optionShade);
 
-        let optionButton = buttons.image(assets+data[i].image,buttonSideW,buttonSideH);
+        let optionButton = buttons.image(assets+flavorData[i].image,buttonSideW,buttonSideH);
         optionButtons.push(optionButton);
         optionButton.move(buttonRimW+(optionOffset+i*itemWidth),buttonRimH);
 
@@ -125,7 +108,7 @@ function initUI(data) {
         optionBorder.move(borderRimW+(optionOffset+i*itemWidth),borderRimH);
         optionBorder.radius(15);
 
-        let optionText = buttons.text(data[i].name);
+        let optionText = buttons.text(flavorData[i].name);
         let length = optionText.length();
         let adjust = (borderSideW - length)/2;
         optionText.move(borderRimW+(optionOffset+i*itemWidth)+adjust,borderRimH+borderSideH+10);
@@ -212,20 +195,6 @@ function pageRight() {
     }
     console.log("C1 page:"+page+" shift:"+buttons.x());
 }
-
-// function updateChevrons() {
-//     console.log("page:"+page+" pages:"+pages);
-//     if (page == 0) {
-//         leftChevron.stroke('none');
-//     } else {
-//         leftChevron.stroke('Gray');
-//     }
-//     if (page == pages - 1) {
-//         rightChevron.stroke('none');
-//     } else {
-//         rightChevron.stroke('Gray');
-//     }
-// }
 
 function setFrozen(value) {
     console.log("C1 setFrozen");
