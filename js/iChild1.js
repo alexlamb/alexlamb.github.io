@@ -10,9 +10,9 @@ divEl.style.color = 'red';
 
 window.onload = function() {
   
-  var divEl = document.getElementById('testdiv');
-  divEl.innerHTML = "Onload happened";
-  divEl.style.color = 'blue';
+//   var divEl = document.getElementById('testdiv');
+//   divEl.innerHTML = "Onload happened";
+//   divEl.style.color = 'blue';
   
   window.onmessage = (event) => {
     divEl = document.getElementById('testdiv');
