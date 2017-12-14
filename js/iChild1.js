@@ -8,7 +8,6 @@ window.onmessage = (event) => {
   divEl.style.color = 'green';
 };
 
-
 window.onload = function() {
   
   var divEl = document.getElementById('testdiv');
@@ -36,7 +35,7 @@ window.onload = function() {
   }
 }
 
-const assets = "assets/"
+const assets = "http://alexlamb.github.io/js/assets/"
 // const assets = "assets/"
 const leftChev = "chevron-left.png";
 const rightChev = "chevron-right.png";
