@@ -1,10 +1,19 @@
 var divEl = document.getElementById('testdiv');
 divEl.innerHTML = "Onload not required";
+divEl.style.color = 'red';
+
+window.onmessage = (event) => {
+  divEl = document.getElementById('testdiv');
+  divEl.innerHTML = "messages arriving";
+  divEl.style.color = 'green';
+};
+
 
 window.onload = function() {
   
   var divEl = document.getElementById('testdiv');
   divEl.innerHTML = "Onload happened";
+  divEl.style.color = 'blue';
   
   window.onmessage = (event) => {
     console.log("C1 message received from parent");
