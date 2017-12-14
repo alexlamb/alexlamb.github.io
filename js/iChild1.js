@@ -2,11 +2,11 @@ var divEl = document.getElementById('testdiv');
 divEl.innerHTML = "Onload not required";
 divEl.style.color = 'red';
 
-// window.onmessage = (event) => {
-//   divEl = document.getElementById('testdiv');
-//   divEl.innerHTML = "messages arriving";
-//   divEl.style.color = 'green';
-// };
+window.onmessage = (event) => {
+  divEl = document.getElementById('testdiv');
+  divEl.innerHTML = "messages arriving";
+  divEl.style.color = 'green';
+};
 
 window.onload = function() {
   
@@ -14,29 +14,29 @@ window.onload = function() {
 //   divEl.innerHTML = "Onload happened";
 //   divEl.style.color = 'blue';
   
-  window.onmessage = (event) => {
-    divEl = document.getElementById('testdiv');
-    divEl.innerHTML = "messages arriving";
-    divEl.style.color = 'green';
-
-    console.log("C1 message received from parent");
-    if (event.data) {
-      // console.log(JSON.stringify(event));
-      // console.log(JSON.stringify(event.data));
-
-      if (event.data.action === "Init") {
-          initUI(event.data.content);
-      } else if (event.data.action === "Freeze") {
-          console.log("C1 Freeze request");
-          setFrozen(true);
-      } else if (event.data.action === "Unfreeze") {
-          console.log("C1 Unfreeze request");
-          setFrozen(false);
-      } else if (event.data.action === "Remove") {
-          removeIngredient(event.data.content);
-      }
-    }
-  }
+//   window.onmessage = (event) => {
+//     divEl = document.getElementById('testdiv');
+//     divEl.innerHTML = "messages arriving";
+//     divEl.style.color = 'green';
+// 
+//     console.log("C1 message received from parent");
+//     if (event.data) {
+//       // console.log(JSON.stringify(event));
+//       // console.log(JSON.stringify(event.data));
+// 
+//       if (event.data.action === "Init") {
+//           initUI(event.data.content);
+//       } else if (event.data.action === "Freeze") {
+//           console.log("C1 Freeze request");
+//           setFrozen(true);
+//       } else if (event.data.action === "Unfreeze") {
+//           console.log("C1 Unfreeze request");
+//           setFrozen(false);
+//       } else if (event.data.action === "Remove") {
+//           removeIngredient(event.data.content);
+//       }
+//     }
+//   }
 }
 
 const assets = "https://alexlamb.github.io/js/assets/"
