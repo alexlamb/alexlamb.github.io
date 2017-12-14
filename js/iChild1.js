@@ -1,3 +1,6 @@
+var divEl = document.getElementById('testdiv');
+divEl.innerHTML = "Onload not required";
+
 window.onload = function() {
   
   var divEl = document.getElementById('testdiv');
