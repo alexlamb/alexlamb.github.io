@@ -1,9 +1,9 @@
-var divEl = document.getElementById('testdiv');
-divEl.innerHTML = "Onload not required";
-divEl.style.color = 'red';
+// var divEl = document.getElementById('testdiv');
+// divEl.innerHTML = "Onload not required";
+// divEl.style.color = 'red';
 
 window.onmessage = (event) => {
-  divEl = document.getElementById('testdiv');
+  let divEl = document.getElementById('testdiv');
   divEl.innerHTML = "messages arriving";
   divEl.style.color = 'green';
 };
