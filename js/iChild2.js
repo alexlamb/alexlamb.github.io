@@ -482,17 +482,17 @@ function updateUI() {
         startText1.tspan("Get started").fill('#52009A').font({weight:'bold'});
         startText1.tspan(" by selecting some flavorings");
         startText1.build(false);
-        startText1.move(120,140);
+        startText1.move(120,140+60);
 
         let startText2 = controls.text("for your vodka above...")
         startText2.font({family:'Helvetica',size:20});
-        startText2.move(200,170);
+        startText2.move(200,170+60);
 
         let startIcon = controls.image(assets+"/mix.png",100,100);
-        startIcon.move(240,200);
+        startIcon.move(240,200+60);
 
         let arrowIcon = controls.image(assets+"/arrow.png",160,160);
-        arrowIcon.move(360,-30);
+        arrowIcon.move(360,-30+60);
     }
     // controls.move(0,rowTop);
 }
