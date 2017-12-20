@@ -263,7 +263,8 @@ function updateSelection(selectionData) {
 
     var message = {
         action: action,
-        selection: state
+        selection: state,
+        recipe: getRecipeText()
     };
     window.parent.postMessage(message,"*");
     selected = nowSelected;
@@ -521,7 +522,20 @@ function updateState(i, j) {
 
     var message = {
         action: action,
-        selection: state
+        selection: state,
+        recipe: getRecipeText()
     };
     window.parent.postMessage(message,"*");
+}
+
+function getRecipeText() {
+    let string = "";
+    for (let i = 0; i < state.length; i++) {
+        if (state[i] > 0) {
+            let newEl = optionData[i].name+":"+state[i]+",";
+            string += newEl;
+        }
+    }
+    console.log(string);
+    return string;
 }
