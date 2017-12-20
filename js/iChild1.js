@@ -250,13 +250,16 @@ function selectOption(i) {
 }
 
 function removeIngredient(data) {
+
     for (let i = 0; i < data.length; i++) {
         if (data[i] == 0 && state[i] > 0) {
 
-            optionBorders[i].stroke('none');
-            console.log("C1 Unfreezing");
-            state[i] = 0;
-            setFrozen(false);
+            selectOption(i);
+            break;
+            // optionBorders[i].stroke('none');
+            // console.log("C1 Unfreezing");
+            // state[i] = 0;
+            // setFrozen(false);
         }
     }
 }

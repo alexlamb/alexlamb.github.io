@@ -1,6 +1,8 @@
 
 var child1 = document.getElementById("child1").contentWindow;
 var child2 = document.getElementById("child2").contentWindow;
+var child3 = document.getElementById("child3").contentWindow;
+var child4 = document.getElementById("child4").contentWindow;
 
 window.onload = function() {
 
@@ -26,14 +28,20 @@ window.onload = function() {
 
             } else if (event.data.action === "RemoveIngredient") {
                 sendMessage(child1, "Remove", event.data.selection);
+                sendMessage(child3, "Remove", event.data.selection);
+                sendMessage(child4, "Remove", event.data.selection);
                 reflectMessage(event.data.selection);
 
             } else if (event.data.action === "FreezeOptions") {
                 sendMessage(child1, "Freeze", event.data.selection);
+                sendMessage(child3, "Freeze", event.data.selection);
+                sendMessage(child4, "Freeze", event.data.selection);
                 reflectMessage(event.data.selection);
 
             } else if (event.data.action === "UpdateRecipe") {
                 sendMessage(child1, "Unfreeze", event.data.selection);
+                sendMessage(child3, "Unfreeze", event.data.selection);
+                sendMessage(child4, "Unfreeze", event.data.selection);
                 reflectMessage(event.data.selection);
             }
         }

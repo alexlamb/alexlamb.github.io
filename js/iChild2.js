@@ -30,7 +30,7 @@ function initUI() {
     state = new Array(flavorData.length);
     state.fill(0);
 
-    width = 1000;
+    width = 700;
     height = 800;
 
     var svgNode = document.getElementById("svgCanvas");
@@ -279,98 +279,97 @@ function updateUI() {
         capacity -= state[i];
     }
 
-    let messge = 0;
-    if (capacity > 0) {
-        helpText.text("You have ");
-        helpText.build(true);
-        helpText.tspan(""+capacity).fill('Green');
-        if (capacity ==1 ) {
-            helpText.tspan(" part left to add");
-        } else {
-            helpText.tspan(" parts left to add");
-        }
-        helpText.build(false);
+    // if (capacity > 0) {
+    //     helpText.text("You have ");
+    //     helpText.build(true);
+    //     helpText.tspan(""+capacity).fill('Green');
+    //     if (capacity ==1 ) {
+    //         helpText.tspan(" part left to add");
+    //     } else {
+    //         helpText.tspan(" parts left to add");
+    //     }
+    //     helpText.build(false);
+    //
+    //     // message = "You have "+capacity+" parts left to add"
+    // } else {
+    //     message = "Reduce flavors to change the balance"
+    //     helpText.text(message);
+    // }
 
-        // message = "You have "+capacity+" parts left to add"
-    } else {
-        message = "Reduce flavors to change the balance"
-        helpText.text(message);
-    }
+    // const bottleSide = 600;
+    // const bottleImLeft = 580;
+    // const bottleImTop = -45;
+    // const levelInc = 32;
+    // const bottleBottom = (units*levelInc) + 98;
+    // const bottleRectLeft = 766;
+    // const bottleWidth = 178;
+    // const iconMax = 160;
+    // // const bottleRight = bottleRectLeft + bottleWidth;
+    //
+    // bottleBack = controls.rect(450,550);
+    // bottleBack.fill('#F7F7F7');
+    // bottleBack.move(bottleImLeft+100,bottleImTop);
+    //
+    // var level = 0;
+    // var element = yPos-1;
+    // // for (let i = 0; i < state.lengh; i++) {
+    // for (let i = state.length-1; i >= 0; i--) {
+    //
+    //     if (state[i] > 0) {
+    //         let rectHeight = state[i]*levelInc;
+    //         let rectTop = bottleBottom-(rectHeight+level);
+    //
+    //         rect = controls.rect(bottleWidth,rectHeight-2);
+    //         // rect.fill('#ECF2F9');
+    //         rect.fill('#DCE2F9');
+    //         rect.move(bottleRectLeft,rectTop);
+    //
+    //         level += rectHeight;
+    //         element--;
+    //     }
+    // }
+    //
+    // let bottle = controls.image(assets+"border-bottle.png",550,550);
+    // bottle.move(bottleImLeft,bottleImTop);
+    //
+    // var level = 0;
+    // var element = yPos-1;
+    // for (let i = state.length-1; i >= 0; i--) {
+    //
+    //     if (state[i] > 0) {
+    //         let rectHeight = state[i]*levelInc;
+    //         let rectTop = bottleBottom-(rectHeight+level);
+    //
+    //         let imSide = Math.min(iconMax, rectHeight);
+    //         let imLeft = bottleRectLeft + (bottleWidth-imSide)/2;
+    //         let imTop = rectTop + (rectHeight - imSide)/2;
+    //         let im = controls.image(assets+optionData[i].image,imSide,imSide);
+    //         im.move(imLeft, imTop);
+    //
+    //         let labelText = controls.text(optionData[i].name);
+    //         let length = labelText.length();
+    //         let adjust = (imSide - length)/2;
+    //         labelText.font({family:'Helvetica',size:20})
+    //         labelText.fill("Gray");
+    //         labelText.move(imLeft+adjust+1,1+imTop+(imSide/2)-10);
+    //
+    //         let labelText2 = controls.text(optionData[i].name);
+    //         labelText2.font({family:'Helvetica',size:20})
+    //         labelText2.fill("White");
+    //         labelText2.move(imLeft+adjust,imTop+(imSide/2)-10);
+    //
+    //         level += rectHeight;
+    //         element--;
+    //     }
+    // }
 
-    const bottleSide = 600;
-    const bottleImLeft = 580;
-    const bottleImTop = -45;
-    const levelInc = 32;
-    const bottleBottom = (units*levelInc) + 98;
-    const bottleRectLeft = 766;
-    const bottleWidth = 178;
-    const iconMax = 160;
-    // const bottleRight = bottleRectLeft + bottleWidth;
-
-    bottleBack = controls.rect(450,550);
-    bottleBack.fill('#F7F7F7');
-    bottleBack.move(bottleImLeft+100,bottleImTop);
-
-    var level = 0;
-    var element = yPos-1;
-    // for (let i = 0; i < state.lengh; i++) {
-    for (let i = state.length-1; i >= 0; i--) {
-
-        if (state[i] > 0) {
-            let rectHeight = state[i]*levelInc;
-            let rectTop = bottleBottom-(rectHeight+level);
-
-            rect = controls.rect(bottleWidth,rectHeight-2);
-            // rect.fill('#ECF2F9');
-            rect.fill('#DCE2F9');
-            rect.move(bottleRectLeft,rectTop);
-
-            level += rectHeight;
-            element--;
-        }
-    }
-
-    let bottle = controls.image(assets+"border-bottle.png",550,550);
-    bottle.move(bottleImLeft,bottleImTop);
-
-    var level = 0;
-    var element = yPos-1;
-    for (let i = state.length-1; i >= 0; i--) {
-
-        if (state[i] > 0) {
-            let rectHeight = state[i]*levelInc;
-            let rectTop = bottleBottom-(rectHeight+level);
-
-            let imSide = Math.min(iconMax, rectHeight);
-            let imLeft = bottleRectLeft + (bottleWidth-imSide)/2;
-            let imTop = rectTop + (rectHeight - imSide)/2;
-            let im = controls.image(assets+optionData[i].image,imSide,imSide);
-            im.move(imLeft, imTop);
-
-            let labelText = controls.text(optionData[i].name);
-            let length = labelText.length();
-            let adjust = (imSide - length)/2;
-            labelText.font({family:'Helvetica',size:20})
-            labelText.fill("Gray");
-            labelText.move(imLeft+adjust+1,1+imTop+(imSide/2)-10);
-
-            let labelText2 = controls.text(optionData[i].name);
-            labelText2.font({family:'Helvetica',size:20})
-            labelText2.fill("White");
-            labelText2.move(imLeft+adjust,imTop+(imSide/2)-10);
-
-            level += rectHeight;
-            element--;
-        }
-    }
-
-    const rowTop = 60;
+    const rowTop = 0;
     const rowHeight = 100;
     const textWidth = 100;
     const textTop = 36;
     const textLeft = 170;
     const iconTop = 0;
-    const iconLeft = 80;
+    const iconLeft = 0;//80;
     const iconSide = 80;
     const dotGap = 30;
     const diameter = 24;
@@ -495,7 +494,7 @@ function updateUI() {
         let arrowIcon = controls.image(assets+"/arrow.png",160,160);
         arrowIcon.move(360,-30);
     }
-    controls.move(0,rowTop);
+    // controls.move(0,rowTop);
 }
 
 function updateState(i, j) {
