@@ -77,4 +77,7 @@ function updateUI() {
         helpText.text(message);
         helpText.fill("#333333");
     }
+
+    let tWidth = helpText.length();
+    helpText.move((width-tWidth)/2,0);
 }

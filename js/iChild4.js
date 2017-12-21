@@ -25,7 +25,7 @@ function initUI() {
     state = new Array(flavorData.length);
     state.fill(0);
 
-    width = 400;
+    width = 300;
     height = 800;
 
     var svgNode = document.getElementById("svgCanvas");
@@ -62,11 +62,11 @@ function updateUI() {
 
     const rowTop = 0;//60;
     const bottleSide = 600;
-    const bottleImLeft = 0;//580;
+    const bottleImLeft = -125;//0;//580;
     const bottleImTop = -45+60;
     const levelInc = 32;
     const bottleBottom = (units*levelInc) + 98+60;
-    const bottleRectLeft = 766-580;
+    const bottleRectLeft = 766-580-125;
     const bottleWidth = 178;
     const iconMax = 160;
     // const bottleRight = bottleRectLeft + bottleWidth;
