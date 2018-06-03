@@ -154,13 +154,10 @@ function updateNodeList() {
         x += bx;
         y += by;
 
-        // agent.cx(x);
-        // agent.cy(y);
-
 		agent.position.x = x;
 		agent.position.z = y;
 
-        let h = Math.floor(v4 * i * 360 / 500);
+        let h = Math.floor(v4/5 * i * 360 / 500);
 		agent.material.color = new THREE.Color('hsl('+h+',100%,50%)');
 
 
@@ -168,11 +165,9 @@ function updateNodeList() {
         agent.scale.y = height;
 		agent.position.y = -1 + height / 2;
 
-        let width = 1 + 1 * Math.sin(v6/5 * i * Math.PI/ 500);
+        let width = 1.2 + 1 * Math.sin(v6/5 * i * Math.PI/ 500);
 		agent.scale.x = width;
 		agent.scale.z = width;
-
-
     }
 
 
