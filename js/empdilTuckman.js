@@ -121,7 +121,7 @@ function simEmpDilemma() {
         //(This is the simple case)
         console.log("Creating groups");
         //Single group scenario
-        buildGroup(0, "Everyone", 0, agentCount, 0, 0, width, height);
+        buildGroup(0, "All", 0, agentCount, 0, 0, width, height);
         //Leader/worker scenario
         // buildGroup(0, "Leaders", 0, 1*agentCount/8, 0, 0, width, 1*height/8 + 45);
         // buildGroup(1, "Workers", 1, 7*agentCount/8, 0, 1*height/8 + 45, width, 7*height/8 - 45);
@@ -438,7 +438,7 @@ function simEmpDilemma() {
         If an agent feels a status conflict, they retaliate conditionally.
         If they're higher or equal ranking than their partner, they'll always retaliate.
         If they're lower ranking, then they'll retaliate based on culture.
-    
+
         So we check the rank.
         If we're in the rank bounds where suppression counts, we act with some proability.
         */
@@ -504,7 +504,7 @@ function simEmpDilemma() {
             context0.fillStyle = group.color;
             context0.font = '16px Arial';
             context0.strokeRect(group.x, group.y, group.width - 1, group.height - 1);
-            context0.fillText(group.label, group.x + labelX, group.y + labelY);
+            context0.fillText(group.label+" agents", group.x + labelX, group.y + labelY);
         }
     }
     function paintPlot(index) {
@@ -557,7 +557,7 @@ function simEmpDilemma() {
         context.fillStyle = group.color;
         context.font = '16px Arial';
         context.strokeRect(0, 0, width - 1, height - 1);
-        context.fillText(group.label, labelX, labelY);
+        context.fillText(group.label+" behaviors", labelX, labelY);
         for (let i = 1; i < cols; i++) {
             let xStep = width / cols;
             let c = i + start;
