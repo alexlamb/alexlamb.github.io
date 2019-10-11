@@ -12,7 +12,7 @@ const radius = 5;
 const sense = 25;
 const ripple = 25;
 
-const clock = 250;//150;50;
+const clock = 80;//250;//150;50;
 const anim = 150;
 const initCount = 2000;//2000;
 
