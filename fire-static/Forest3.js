@@ -17,7 +17,7 @@ const anim = 150;
 const initCount = 2000;//2000;
 
 const fireProbL = 0.02;//Natural case
-const fireProbR = 0.0005;//Suppression case
+const fireProbR = 0.001;//Suppression case
 // const fireProb = fireProbL;
 
 const growthStep = 1000;
@@ -53,19 +53,21 @@ document.body.style.backgroundColor = "black";
 
 var textL = draw.text("Natural Forest")
 textL.move(50, height - 120);
-textL.fill('mediumorchid');
+// textL.fill('mediumorchid');
+textL.fill('white');
 textL.opacity(0.9);
 textL.font({size:60});
 
 var textR = draw.text("Fire Suppression")
 textR.move(split+50, height - 120);
-textR.fill('mediumorchid');
+// textR.fill('mediumorchid');
+textR.fill('white');
 textR.opacity(0.9);
 textR.font({size:60});
 
-var divider = draw.line(split, 0, split, height).stroke({width:6})
-divider.stroke('lightgray');
-divider.opacity(0.8);
+// var divider = draw.line(split, 0, split, height).stroke({width:6})
+// divider.stroke('lightgray');
+// divider.opacity(0.8);
 
 
 /* Upon click, add a new agent to the canvas
