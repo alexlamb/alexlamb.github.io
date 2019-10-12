@@ -12,7 +12,7 @@ const radius = 5;
 const sense = 25;
 const ripple = 25;
 
-const clock = 80;//250;//150;50;
+const clock = 80;//150;50;
 const anim = 150;
 const initCount = 2000;//2000;
 
@@ -54,7 +54,7 @@ document.body.style.backgroundColor = "black";
 var textL = draw.text("Natural Forest")
 textL.move(50, height - 120);
 // textL.fill('mediumorchid');
-textL.fill('white');
+textR.fill('white');
 textL.opacity(0.9);
 textL.font({size:60});
 
@@ -62,7 +62,8 @@ var textR = draw.text("Fire Suppression")
 textR.move(split+50, height - 120);
 // textR.fill('mediumorchid');
 textR.fill('white');
-textR.opacity(0.9);
+// textR.opacity(0.9);
+textR.opacity(0.95);
 textR.font({size:60});
 
 // var divider = draw.line(split, 0, split, height).stroke({width:6})
@@ -86,6 +87,7 @@ function add() {
         let x = Math.floor(Math.random() * width);
         let y = Math.floor(Math.random() * height);
         state = 0;
+        
         if (Math.random() < fireProb(x)) {
             state = 1;
         }
