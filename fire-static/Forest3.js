@@ -54,7 +54,7 @@ document.body.style.backgroundColor = "black";
 var textL = draw.text("Natural Forest")
 textL.move(50, height - 120);
 // textL.fill('mediumorchid');
-textR.fill('white');
+textL.fill('white');
 textL.opacity(0.9);
 textL.font({size:60});
 
