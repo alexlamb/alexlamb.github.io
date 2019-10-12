@@ -16,8 +16,8 @@ const clock = 80;//150;50;
 const anim = 150;
 const initCount = 2000;//2000;
 
-const fireProbL = 0.02;//Natural case
-const fireProbR = 0.001;//Suppression case
+const fireProbL = 0.03;//Natural case
+const fireProbR = 0.0005;//Suppression case
 // const fireProb = fireProbL;
 
 const growthStep = 1000;
