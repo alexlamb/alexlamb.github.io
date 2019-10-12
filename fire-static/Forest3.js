@@ -97,7 +97,7 @@ function add() {
 
     textL.front();
     textR.front();
-    divider.front();
+//     divider.front();
     step++;
 }
 var timer = setInterval(add, clock);
