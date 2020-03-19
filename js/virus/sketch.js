@@ -1,5 +1,5 @@
 const side = 800;
-const controlWidth = 400;
+const controlWidth = 500;
 const familyCount = 1000;
 const maxFamily = 8;
 const maxFamRadius = 20;
@@ -26,15 +26,17 @@ const agentList = [];
 var wave = [];
 const capacity = familyCount / 2;
 
-const plotHeight = 200;
-const plotY = 200;
-var momentList = [];
+const controlsHeight = 160;
+const textGapX = 90;
+const textGapY = 20;
+const textX = side + textGapX;
+const textY = controlsHeight + textGapY;
+const barOffset = 4;
 
-// const NONE = 0;
-// const CAUTION = 1;
-// const LOCKDOWN = 2;
-// const options = [NONE, CAUTION, LOCKDOWN];
-// var intervention = NONE;
+const plotHeight = 200;
+const plotOffsetX = 20;
+const plotY = controlsHeight + (textGapY * 6);
+var momentList = [];
 
 const buttonOffset = 10;
 const buttonWidth = 140;
@@ -120,7 +122,19 @@ function initSim() {
     noStroke();
     fill(255);
     rect(side,0,controlWidth,side);
-    stroke(1);    
+    stroke(1);   
+
+    textAlign(RIGHT);
+    noStroke();
+    fill(0);
+    // noFill();
+    // stroke(0);
+    text('Infected:',textX,textY+(textGapY*0));
+    text('Critical:',textX,textY+(textGapY*1));
+    text('Immune:',textX,textY+(textGapY*2));
+    text('Lives lost:',textX,textY+(textGapY*3));
+    fill('darkred');
+    text('Lives wasted:',textX,textY+(textGapY*4));
 }
 
 function updateSim() {
@@ -230,8 +244,18 @@ function updateSim() {
     wave = newWave;
 }
 
+function drawBar(value, barCol, offset) {
+    let plotScale = 2 * plotHeight / agentList.length;
+    fill('white');
+    noStroke();
+    rect(textX + barOffset, textY+(textGapY*offset), 400, textGapY);
+    infectLen = value * plotScale;
+    fill(barCol);
+    rect(textX + barOffset, textY+(textGapY*offset), infectLen, textGapY);
+}
+
 function drawSim() {
-        // Draw network
+    // Draw network
     stroke(0);
     for (let agent of agentList) {
         if (agent.state > 0) {
@@ -244,17 +268,60 @@ function drawSim() {
         } else if (agent.state == DEAD) {
             fill(0);
         } else if (agent.state == IMMUNE) {
-            fill('green');
+            fill('forestgreen');
         } else {
             fill(255);            
         }
         ellipse(agent.x,agent.y,dot,dot);
     }
 
+    moment = momentList[momentList.length-1];
+
+    drawBar(moment.infected, 'gold', -.7);
+    drawBar(moment.critical, 'crimson', .3);
+    drawBar(moment.immune, 'forestgreen', 1.3);
+    drawBar(moment.dead, 'black', 2.3);
+    drawBar(moment.wasted, 'gray', 3.3);
+
+    // fill('white');
+    // noStroke();
+    // rect(textX, textY+(textGapY*-.7), 400, textGapY);
+    // infectLen = moment.infected * plotScale;
+    // fill('gold');
+    // rect(textX, textY+(textGapY*-.7), infectLen, textGapY);
+
+    // fill('white');
+    // noStroke();
+    // rect(textX, textY+(textGapY*.3), 400, textGapY);
+    // criticalLen = moment.critical * plotScale;
+    // fill('crimson');
+    // rect(textX, textY+(textGapY*.3), criticalLen, textGapY);
+
+    // fill('white');
+    // noStroke();
+    // rect(textX, textY+(textGapY*1.3), 400, textGapY);
+    // immuneLen = moment.immune * plotScale;
+    // fill('forestgreen');
+    // rect(textX, textY+(textGapY*1.3), immuneLen, textGapY);
+
+    // fill('white');
+    // noStroke();
+    // rect(textX, textY+(textGapY*2.3), 400, textGapY);
+    // deadLen = moment.dead * plotScale;
+    // fill('black');
+    // rect(textX, textY+(textGapY*2.3), deadLen, textGapY);
+
+    // fill('white');
+    // noStroke();
+    // rect(textX, textY+(textGapY*3.3), 400, textGapY);
+    // wastedLen = moment.wasted * plotScale;
+    // fill('gray');
+    // rect(textX, textY+(textGapY*3.3), wastedLen, textGapY);
+
     // Draw plot
+    plotScale = 1 * plotHeight / agentList.length;
     for (const [i, moment] of momentList.entries()) {
-        let plotScale = plotHeight / agentList.length;
-        x = side + i;
+        x = side + plotOffsetX + i;
 
         y = plotY;
         deadLen = plotY + (moment.dead * plotScale);
@@ -268,7 +335,7 @@ function drawSim() {
 
         y = wastedLen;
         immuneLen = wastedLen + (moment.immune * plotScale);
-        stroke('green');
+        stroke('forestgreen');
         line(x,y,x,immuneLen);
 
         if (moment.infected > 0) {
@@ -280,7 +347,7 @@ function drawSim() {
         if (moment.critical > 0) {
             y = plotY + plotHeight - infectLen;
             criticalLen = moment.critical * plotScale;
-            stroke('red');
+            stroke('crimson');
             line(x,y,x,y - criticalLen);            
         }
     }
@@ -363,6 +430,7 @@ function setup() {
 
     initSim();
     drawSim();
+
 }
 
 function draw() {
