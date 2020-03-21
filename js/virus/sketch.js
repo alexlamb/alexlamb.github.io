@@ -50,44 +50,79 @@ var cautionButton;
 var lockButton;
 var optionButtons = [];
 
+const resetString = "Reset";
 const pauseString = "Pause";
 const playString = "Play";
-var playState = playString
+var playState = playString;
+// var playState = pauseString;
+
+const buttonList = [];
+var currentState = 0;
+
+/* How are buttons going to work?
+Each button is:
+* A set of coords: x, y, w, h
+* Some text
+* A background color
+* A function to be fired when the coord is touched
+*/
 
 
-function setupOptionButton(button) {
-    formatButton(button);
-    button.onPress = function() {
-        processClick(button.text);
-    }
-    optionButtons.push(button);
-}
+// function setupOptionButton(button) {
+//     formatButton(button);
+//     button.onPress = function() {
+//         processClick(button.text);
+//     }
+//     optionButtons.push(button);
+// }
 
-function formatButton(button) {
-    button.resize(buttonWidth, buttonHeight);    
-    button.cornerRadius = cornerRadius;
-    button.strokeWeight = 1;
-}
+// function formatButton(button) {
+//     button.resize(buttonWidth, buttonHeight);    
+//     button.cornerRadius = cornerRadius;
+//     button.strokeWeight = 1;
+// }
 
-function processClick(msgString) {
-    for (const [i, button] of optionButtons.entries()) {
-        if (msgString == button.text) {
+
+// function processClick(msgString) {
+//     for (const [i, button] of optionButtons.entries()) {
+//         if (msgString == button.text) {
+//             button.color = 'lightgray';
+//             radius = radii[i];         
+//         } else {
+//             button.color = 'white';
+//         }
+//     }
+// }
+
+// function toggleGo() {
+//     if (goButton.text == playString) {
+//         playState = pauseString;
+//     } else {        
+//         playState = playString;
+//     }
+//     goButton.text = playState;
+// }
+
+function pickButton(value) {
+    radius = radii[value];         
+    for (const [i, button] of buttonList.entries()) {
+        if (i == value) {
             button.color = 'lightgray';
-            radius = radii[i];         
         } else {
-            button.color = 'white';
+            button.color = 'white';            
         }
     }
 }
 
 function toggleGo() {
-    if (goButton.text == playString) {
+    if (playState == playString) {
         playState = pauseString;
-    } else {        
-        playState = playString;
+    } else {
+        playState = playString;        
     }
-    goButton.text = playState;
+    buttonList[4].text = playState;
 }
+
 
 function getDist(a, b) {
     xDist = a.x - b.x;
@@ -245,13 +280,25 @@ function updateSim() {
 }
 
 function drawBar(value, barCol, offset) {
+
+    noStroke();
+    fill(255);
+    rect(textX + barOffset, textY+(textGapY*offset), 100, textGapY);
+
+    fill(0);
+    noStroke();
+    textAlign(RIGHT);
+    text(`${value}`,textX + barOffset + 12 + 20, textY+(textGapY*offset)+14);
+
     let plotScale = 2 * plotHeight / agentList.length;
     fill('white');
     noStroke();
-    rect(textX + barOffset, textY+(textGapY*offset), 400, textGapY);
+    rect(textX + barOffset + 40, textY+(textGapY*offset), 400, textGapY);
     infectLen = value * plotScale;
     fill(barCol);
-    rect(textX + barOffset, textY+(textGapY*offset), infectLen, textGapY);
+    rect(textX + barOffset + 40, textY+(textGapY*offset), infectLen, textGapY);
+
+
 }
 
 function drawSim() {
@@ -282,41 +329,6 @@ function drawSim() {
     drawBar(moment.immune, 'forestgreen', 1.3);
     drawBar(moment.dead, 'black', 2.3);
     drawBar(moment.wasted, 'gray', 3.3);
-
-    // fill('white');
-    // noStroke();
-    // rect(textX, textY+(textGapY*-.7), 400, textGapY);
-    // infectLen = moment.infected * plotScale;
-    // fill('gold');
-    // rect(textX, textY+(textGapY*-.7), infectLen, textGapY);
-
-    // fill('white');
-    // noStroke();
-    // rect(textX, textY+(textGapY*.3), 400, textGapY);
-    // criticalLen = moment.critical * plotScale;
-    // fill('crimson');
-    // rect(textX, textY+(textGapY*.3), criticalLen, textGapY);
-
-    // fill('white');
-    // noStroke();
-    // rect(textX, textY+(textGapY*1.3), 400, textGapY);
-    // immuneLen = moment.immune * plotScale;
-    // fill('forestgreen');
-    // rect(textX, textY+(textGapY*1.3), immuneLen, textGapY);
-
-    // fill('white');
-    // noStroke();
-    // rect(textX, textY+(textGapY*2.3), 400, textGapY);
-    // deadLen = moment.dead * plotScale;
-    // fill('black');
-    // rect(textX, textY+(textGapY*2.3), deadLen, textGapY);
-
-    // fill('white');
-    // noStroke();
-    // rect(textX, textY+(textGapY*3.3), 400, textGapY);
-    // wastedLen = moment.wasted * plotScale;
-    // fill('gray');
-    // rect(textX, textY+(textGapY*3.3), wastedLen, textGapY);
 
     // Draw plot
     plotScale = 1 * plotHeight / agentList.length;
@@ -396,41 +408,97 @@ function setup() {
         }
     }
 
-    //Setup controls
+    //Set up controls
+    // noneY = buttonOffset;
+    // noneButton = new Clickable(side + buttonOffset, noneY);
+    // noneButton.text = noneString;
+    // setupOptionButton(noneButton);
+    // noneButton.color = 'lightgray';
+
+    // cautionY = noneY + buttonOffset + buttonHeight;
+    // cautionButton = new Clickable(side + buttonOffset, cautionY);
+    // cautionButton.text = cautionString;
+    // setupOptionButton(cautionButton);
+
+    // lockY = cautionY + buttonOffset + buttonHeight;
+    // lockButton = new Clickable(side + buttonOffset, lockY);
+    // lockButton.text = lockString;
+    // setupOptionButton(lockButton);
+
+    // resetButton = new Clickable(side + buttonWidth + buttonOffset* 2, noneY);
+    // resetButton.text = "Reset";
+    // formatButton(resetButton);
+    // resetButton.onPress = function() {
+    //     initSim();
+    //     drawSim();
+    // }
+
+    // goButton = new Clickable(side + buttonWidth + buttonOffset* 2, cautionY);
+    // goButton.text = playState;
+    // formatButton(goButton);
+    // goButton.onPress = function() {
+    //     toggleGo();
+    // }
+
     noneY = buttonOffset;
-    noneButton = new Clickable(side + buttonOffset, noneY);
-    noneButton.text = noneString;
-    setupOptionButton(noneButton);
-    noneButton.color = 'lightgray';
-
     cautionY = noneY + buttonOffset + buttonHeight;
-    cautionButton = new Clickable(side + buttonOffset, cautionY);
-    cautionButton.text = cautionString;
-    setupOptionButton(cautionButton);
-
     lockY = cautionY + buttonOffset + buttonHeight;
-    lockButton = new Clickable(side + buttonOffset, lockY);
-    lockButton.text = lockString;
-    setupOptionButton(lockButton);
 
-    resetButton = new Clickable(side + buttonWidth + buttonOffset* 2, noneY);
-    resetButton.text = "Reset";
-    formatButton(resetButton);
-    resetButton.onPress = function() {
-        initSim();
-        drawSim();
+    noneButton = {
+        text: noneString,
+        x: side + buttonOffset,
+        y: noneY,
+        f: function(){pickButton(0);}
     }
+    buttonList.push(noneButton);
 
-    goButton = new Clickable(side + buttonWidth + buttonOffset* 2, cautionY);
-    goButton.text = playState;
-    formatButton(goButton);
-    goButton.onPress = function() {
-        toggleGo();
+    cautionButton = {
+        text: cautionString,
+        x: side + buttonOffset,
+        y: cautionY,
+        f: function(){pickButton(1);}
     }
+    buttonList.push(cautionButton);
 
+    lockButton = {
+        text: lockString,
+        x: side + buttonOffset,
+        y: lockY,
+        f: function(){pickButton(2);}
+    }
+    buttonList.push(lockButton);
+
+    resetButton = {
+        text: resetString,
+        x: side + buttonWidth + buttonOffset* 2,
+        y: noneY,
+        f: function(){initSim();drawSim();}
+    }
+    buttonList.push(resetButton);
+
+    goButton = {
+        text: playString,
+        x: side + buttonWidth + buttonOffset* 2,
+        y: cautionY,
+        f: function(){toggleGo()}
+    }
+    buttonList.push(goButton);
+
+    pickButton(0);
     initSim();
     drawSim();
+}
 
+function drawButtons() {
+    for (let b of buttonList) {
+        fill(b.color);
+        stroke(0);
+        rect(b.x, b.y, buttonWidth, buttonHeight);
+        fill(0);
+        noStroke();
+        textAlign(CENTER);
+        text(b.text, b.x + buttonWidth/2, b.y + buttonHeight/2 + 4);
+    }
 }
 
 function draw() {
@@ -440,10 +508,17 @@ function draw() {
             updateSim();
         }
     }
+    drawButtons();    
+}
 
-    noneButton.draw();
-    cautionButton.draw();
-    lockButton.draw();
-    resetButton.draw();
-    goButton.draw();
+function mouseClicked() {
+    console.log('event');
+    for (let b of buttonList) {
+        if (mouseX > b.x && 
+            mouseX < b.x+buttonWidth &&
+            mouseY > b.y &&
+            mouseY < b.y+buttonHeight) {
+            b.f.call();
+        }
+    }
 }
