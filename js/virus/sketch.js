@@ -35,7 +35,7 @@ const barOffset = 4;
 
 const plotHeight = 200;
 const plotOffsetX = 20;
-const plotY = controlsHeight + (textGapY * 6);
+const plotY = controlsHeight + (textGapY * 7);
 var momentList = [];
 
 const buttonOffset = 10;
@@ -58,50 +58,6 @@ var playState = playString;
 
 const buttonList = [];
 var currentState = 0;
-
-/* How are buttons going to work?
-Each button is:
-* A set of coords: x, y, w, h
-* Some text
-* A background color
-* A function to be fired when the coord is touched
-*/
-
-
-// function setupOptionButton(button) {
-//     formatButton(button);
-//     button.onPress = function() {
-//         processClick(button.text);
-//     }
-//     optionButtons.push(button);
-// }
-
-// function formatButton(button) {
-//     button.resize(buttonWidth, buttonHeight);    
-//     button.cornerRadius = cornerRadius;
-//     button.strokeWeight = 1;
-// }
-
-
-// function processClick(msgString) {
-//     for (const [i, button] of optionButtons.entries()) {
-//         if (msgString == button.text) {
-//             button.color = 'lightgray';
-//             radius = radii[i];         
-//         } else {
-//             button.color = 'white';
-//         }
-//     }
-// }
-
-// function toggleGo() {
-//     if (goButton.text == playString) {
-//         playState = pauseString;
-//     } else {        
-//         playState = playString;
-//     }
-//     goButton.text = playState;
-// }
 
 function pickButton(value) {
     radius = radii[value];         
@@ -164,12 +120,14 @@ function initSim() {
     fill(0);
     // noFill();
     // stroke(0);
-    text('Infected:',textX,textY+(textGapY*0));
-    text('Critical:',textX,textY+(textGapY*1));
-    text('Immune:',textX,textY+(textGapY*2));
-    text('Lives lost:',textX,textY+(textGapY*3));
+
+    text('Bed capacity:',textX,textY+(textGapY*0));
+    text('Infected:',textX,textY+(textGapY*1));
+    text('Critical:',textX,textY+(textGapY*2));
+    text('Immune:',textX,textY+(textGapY*3));
+    text('Lives lost:',textX,textY+(textGapY*4));
     fill('darkred');
-    text('Lives wasted:',textX,textY+(textGapY*4));
+    text('Lives wasted:',textX,textY+(textGapY*5));
 }
 
 function updateSim() {
@@ -324,11 +282,12 @@ function drawSim() {
 
     moment = momentList[momentList.length-1];
 
-    drawBar(moment.infected, 'gold', -.7);
-    drawBar(moment.critical, 'crimson', .3);
-    drawBar(moment.immune, 'forestgreen', 1.3);
-    drawBar(moment.dead, 'black', 2.3);
-    drawBar(moment.wasted, 'gray', 3.3);
+    drawBar(capacity, 'purple', -.7);
+    drawBar(moment.infected, 'gold', .3);
+    drawBar(moment.critical, 'crimson', 1.3);
+    drawBar(moment.immune, 'forestgreen', 2.3);
+    drawBar(moment.dead, 'black', 3.3);
+    drawBar(moment.wasted, 'gray', 4.3);
 
     // Draw plot
     plotScale = 1 * plotHeight / agentList.length;
@@ -407,38 +366,6 @@ function setup() {
             }
         }
     }
-
-    //Set up controls
-    // noneY = buttonOffset;
-    // noneButton = new Clickable(side + buttonOffset, noneY);
-    // noneButton.text = noneString;
-    // setupOptionButton(noneButton);
-    // noneButton.color = 'lightgray';
-
-    // cautionY = noneY + buttonOffset + buttonHeight;
-    // cautionButton = new Clickable(side + buttonOffset, cautionY);
-    // cautionButton.text = cautionString;
-    // setupOptionButton(cautionButton);
-
-    // lockY = cautionY + buttonOffset + buttonHeight;
-    // lockButton = new Clickable(side + buttonOffset, lockY);
-    // lockButton.text = lockString;
-    // setupOptionButton(lockButton);
-
-    // resetButton = new Clickable(side + buttonWidth + buttonOffset* 2, noneY);
-    // resetButton.text = "Reset";
-    // formatButton(resetButton);
-    // resetButton.onPress = function() {
-    //     initSim();
-    //     drawSim();
-    // }
-
-    // goButton = new Clickable(side + buttonWidth + buttonOffset* 2, cautionY);
-    // goButton.text = playState;
-    // formatButton(goButton);
-    // goButton.onPress = function() {
-    //     toggleGo();
-    // }
 
     noneY = buttonOffset;
     cautionY = noneY + buttonOffset + buttonHeight;
