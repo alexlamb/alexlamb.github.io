@@ -1,5 +1,5 @@
 const side = 800;
-const controlWidth = 500;
+const controlWidth = 600;
 const familyCount = 1000;
 const maxFamily = 8;
 const maxFamRadius = 20;
@@ -19,8 +19,15 @@ const deathProb = 0.005;
 const noneDist = 800;
 const cautionDist = 300;
 const lockDist = 30;
+const isoDist = 10;
 const radii = [noneDist, cautionDist, lockDist];
 var radius = noneDist;
+
+const noIso = 0;
+const lowIso = 1;
+const fastIso = 2;
+const isos = [noIso, lowIso, fastIso];
+var iso = noIso;
 
 const agentList = [];
 var wave = [];
@@ -35,11 +42,11 @@ const barOffset = 4;
 
 const plotHeight = 200;
 const plotOffsetX = 20;
-const plotY = controlsHeight + (textGapY * 7);
+const plotY = controlsHeight + (textGapY * 9);
 var momentList = [];
 
 const buttonOffset = 10;
-const buttonWidth = 140;
+const buttonWidth = 120;
 const buttonHeight = 40;
 const cornerRadius = 0;
 const noneString = "No intervention";
@@ -58,10 +65,33 @@ var playState = playString;
 
 const buttonList = [];
 var currentState = 0;
+const distButtons = [];
+const noIString = "No isolation";
+const loIString = "Slow isolation";
+const hiIString = "Fast isolation";
 
-function pickButton(value) {
-    radius = radii[value];         
-    for (const [i, button] of buttonList.entries()) {
+const isoButtons = [];
+const detectionProb = 0.02;
+
+function pickDistance(value) {
+    radius = radii[value];
+    for (let agent of agentList) {
+        agent.radius = radius;
+    }
+
+    for (const [i, button] of distButtons.entries()) {//TODO!!!!
+        if (i == value) {
+            button.color = 'lightgray';
+        } else {
+            button.color = 'white';            
+        }
+    }
+}
+
+function pickIso(value) {
+    iso = isos[value];
+
+    for (const [i, button] of isoButtons.entries()) {//TODO!!!!
         if (i == value) {
             button.color = 'lightgray';
         } else {
@@ -76,7 +106,7 @@ function toggleGo() {
     } else {
         playState = playString;        
     }
-    buttonList[4].text = playState;
+    buttonList[7].text = playState;
 }
 
 
@@ -92,6 +122,7 @@ function initSim() {
         agent.state = 0;
         agent.critical = false;
         agent.wasted = false;
+        agent.radius = noneDist;
     }
 
     wave = [];
@@ -102,8 +133,10 @@ function initSim() {
 
     momentList = [];
     moment = {
+        unaffected: agentList.length - 1,
         infected: 1,
         critical: 0,
+        isolated: 0,
         dead: 0,
         wasted: 0,
         immune: 0,
@@ -122,12 +155,14 @@ function initSim() {
     // stroke(0);
 
     text('Bed capacity:',textX,textY+(textGapY*0));
-    text('Infected:',textX,textY+(textGapY*1));
-    text('Critical:',textX,textY+(textGapY*2));
-    text('Immune:',textX,textY+(textGapY*3));
-    text('Lives lost:',textX,textY+(textGapY*4));
+    text('Unaffected:',textX,textY+(textGapY*1));
+    text('Infected:',textX,textY+(textGapY*2));
+    text('Critical:',textX,textY+(textGapY*3));
+    text('Isolated:',textX,textY+(textGapY*4));
+    text('Immune:',textX,textY+(textGapY*5));
+    text('Lives lost:',textX,textY+(textGapY*6));
     fill('darkred');
-    text('Lives wasted:',textX,textY+(textGapY*5));
+    text('Lives wasted:',textX,textY+(textGapY*7));
 }
 
 function updateSim() {
@@ -137,7 +172,7 @@ function updateSim() {
         if (agent.state > 0) {
             for (let near of agent.join) {
                 if (Math.random() < transProb && near.state == 0) {
-                    if (getDist(agent, near) < radius) {
+                    if (getDist(agent, near) < agent.radius) {
                         near.state = 1;
                         newWave.push(near);                        
                     }
@@ -158,6 +193,10 @@ function updateSim() {
 
                 //If the agent isn't yet critical
                 if (!agent.critical) {
+
+                    if (iso > lowIso && Math.random() < detectionProb) {
+                        agent.radius = isoDist;
+                    }
 
                     //If the disease gets bad
                     if (Math.random() < criticalProb) {
@@ -183,6 +222,10 @@ function updateSim() {
                     } else if (critCount < capacity) {
                         critCount++;
 
+                        if (iso > noIso) {
+                            agent.radius = isoDist;
+                        }
+
                     } else {
                         agent.state = DEAD;
                         agent.wasted = true;
@@ -203,12 +246,17 @@ function updateSim() {
     }
 
     // Count victims
+    let unaffected = 0;
     let infected = 0;
     let critical = 0;
+    let isolated = 0;
     let dead = 0;
     let wasted = 0;
     let immune = 0;
     for (let agent of agentList) {
+        if (agent.radius == isoDist) {
+            isolated++;
+        }
         if (agent.state > 0) {
             if (agent.critical) {
                 critical++;
@@ -223,11 +271,15 @@ function updateSim() {
             }
         } else if (agent.state == IMMUNE) {
             immune++;
+        } else {
+            unaffected++;
         }
     }  
     let moment = {
+        unaffected: unaffected,
         infected: infected,
         critical: critical,
+        isolated: isolated,
         dead: dead,
         wasted: wasted,
         immune: immune,
@@ -263,6 +315,11 @@ function drawSim() {
     // Draw network
     stroke(0);
     for (let agent of agentList) {
+        if (agent.radius == isoDist) {
+            stroke('cyan');
+        } else {
+            stroke('black');
+        }
         if (agent.state > 0) {
             let shade = agent.state * colorInc;
             if (agent.critical) {
@@ -283,11 +340,13 @@ function drawSim() {
     moment = momentList[momentList.length-1];
 
     drawBar(capacity, 'purple', -.7);
-    drawBar(moment.infected, 'gold', .3);
-    drawBar(moment.critical, 'crimson', 1.3);
-    drawBar(moment.immune, 'forestgreen', 2.3);
-    drawBar(moment.dead, 'black', 3.3);
-    drawBar(moment.wasted, 'gray', 4.3);
+    drawBar(moment.unaffected, 'cornsilk', .3);
+    drawBar(moment.infected, 'gold', 1.3);
+    drawBar(moment.critical, 'crimson', 2.3);
+    drawBar(moment.isolated, 'cyan', 3.3);
+    drawBar(moment.immune, 'forestgreen', 4.3);
+    drawBar(moment.dead, 'black', 5.3);
+    drawBar(moment.wasted, 'gray', 6.3);
 
     // Draw plot
     plotScale = 1 * plotHeight / agentList.length;
@@ -375,43 +434,76 @@ function setup() {
         text: noneString,
         x: side + buttonOffset,
         y: noneY,
-        f: function(){pickButton(0);}
+        f: function(){pickDistance(0);}
     }
     buttonList.push(noneButton);
+    distButtons.push(noneButton);
 
     cautionButton = {
         text: cautionString,
         x: side + buttonOffset,
         y: cautionY,
-        f: function(){pickButton(1);}
+        f: function(){pickDistance(1);}
     }
     buttonList.push(cautionButton);
+    distButtons.push(cautionButton);
 
     lockButton = {
         text: lockString,
         x: side + buttonOffset,
         y: lockY,
-        f: function(){pickButton(2);}
+        f: function(){pickDistance(2);}
     }
     buttonList.push(lockButton);
+    distButtons.push(lockButton);
+
+    noIButton = {
+        text: noIString,
+        x: side + buttonWidth + buttonOffset * 2,
+        y: noneY,
+        f: function(){pickIso(0);}
+    }
+    buttonList.push(noIButton);
+    isoButtons.push(noIButton);
+
+    loIButton = {
+        text: loIString,
+        x: side + buttonWidth + buttonOffset * 2,
+        y: cautionY,
+        f: function(){pickIso(1);}
+    }
+    buttonList.push(loIButton);
+    isoButtons.push(loIButton);
+
+    hiIButton = {
+        text: hiIString,
+        x: side + buttonWidth + buttonOffset * 2,
+        y: lockY,
+        f: function(){pickIso(2);}
+    }
+    buttonList.push(hiIButton);
+    isoButtons.push(hiIButton);
 
     resetButton = {
         text: resetString,
-        x: side + buttonWidth + buttonOffset* 2,
+        x: side + (buttonWidth * 2) + (buttonOffset* 3),
         y: noneY,
+        color: 'whitesmoke',
         f: function(){initSim();drawSim();}
     }
     buttonList.push(resetButton);
 
     goButton = {
         text: playString,
-        x: side + buttonWidth + buttonOffset* 2,
+        x: side + (buttonWidth * 2) + (buttonOffset* 3),
         y: cautionY,
+        color: 'whitesmoke',
         f: function(){toggleGo()}
     }
     buttonList.push(goButton);
 
-    pickButton(0);
+    pickDistance(0);
+    pickIso(0);
     initSim();
     drawSim();
 }
